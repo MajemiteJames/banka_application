@@ -1,0 +1,28 @@
+{
+  "name": "banka_application",
+  "version": "1.0.0",
+  "description": "Banka is a light-weight core banking application that powers banking operations like account",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MajemiteJames/banka_application.git"
+  },
+  "author": "Okoro Majemite",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MajemiteJames/banka_application/issues"
+  },
+  "homepage": "https://github.com/MajemiteJames/banka_application#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "babel-watch": "^7.0.0"
+  }
+}
