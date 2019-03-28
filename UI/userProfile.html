@@ -1,0 +1,93 @@
+<DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>profile</title>
+        <link rel="stylesheet" href="style/userProfile.css">
+    </head>
+    <body>
+        <span class="bckg"></span>
+        <header>
+          <h1>John Doe</h1>
+          <nav>
+            <ul>
+                  <li>
+                    <a href="" data-title="Log Out">Log Out</a>
+                  </li>
+            </ul>
+          </nav>
+          <div class="left-content">
+            <p>Kindly fill the form below to create an account followed by clicking the 'create account' button when done...</p>
+            <div class="tab">Name:
+                <p><input placeholder="First name..." oninput="this.className = ''"></p>
+                <p><input placeholder="Last name..." oninput="this.className = ''"></p>
+            </div>
+            <label class="container">Savings
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+          
+            <label class="container">Current
+                <input type="checkbox">
+            <span class="checkmark"></span>
+            </label>
+            <div style="overflow:auto;">
+                <div>
+                    <button type="button" class="button" onclick="nextPrev(-1)"><span>Create Account</span></button>
+                </div>
+            </div>
+        </div>
+        </header>
+              <div class="overview">
+                <div>
+                    <h4>Overview of Transactions</h4>
+                </div>
+              <div class="account-info">
+                
+                <div class="tab1">Account: Savings</div>
+              
+                <div class="tab1">Initial Balance: ₦1000  </div>
+                <div class="tab1">Account Number: 1234567890  </div>
+              </div>
+
+                <table class="overviewTable">
+                        <thead>
+                          <tr>
+                            <th scope="col">Date created</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Balance</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <a href=""><td data-label="Date created">12/4/2018</td></a>
+                            <td data-label="Description">Withdrawal</td>
+                            <td data-label="Account" class="incident">₦ 37</td>
+                            <td data-label="Balance">₦ 975</td>
+                          </tr>
+                          <tr>
+                            <a href=""><td data-label="Date created">12/4/2018</td></a>
+                            <td data-label="Description">Withdrawal</td>
+                            <td data-label="Account" class="incident">₦ 37</td>
+                            <td data-label="Balance">₦ 975</td>
+                          </tr>
+                          <tr>
+                            <a href=""><td data-label="Date created">12/4/2018</td></a>
+                            <td data-label="Description">Withdrawal</td>
+                            <td data-label="Account" class="incident">₦ 37</td>
+                            <td data-label="Balance">₦ 975</td>
+                          </tr>
+                          <tr>
+                            <a href=""><td data-label="Date created">12/4/2018</td></a>
+                            <td data-label="Description">Withdrawal</td>
+                            <td data-label="Account" class="incident">₦ 37</td>
+                            <td data-label="Balance">₦ 975</td>
+                          </tr>
+                        </tbody>
+                      </table>
+              </div>
+    </body>
+    </html>
