@@ -16,6 +16,7 @@ const accounts = [
       lastName: 'Tosan',
       email: 'ayomidetosan@gmail.com',
       type: 'savings',
+      status: 'draft',
       openingBalance: 15000.00,
     },
     {
@@ -26,6 +27,7 @@ const accounts = [
       lastName: 'Okoro',
       email: 'jamesokoro@gmail.com',
       type: 'current',
+      status: 'draft',
       openingBalance: 65000.00,
     },
     {
@@ -36,6 +38,7 @@ const accounts = [
       lastName: 'Bachor',
       email: 'jamesbachor@gmail.com',
       type: 'savings',
+      status: 'draft',
       openingBalance: 95000.00,
     },
   ];
