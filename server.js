@@ -66,6 +66,23 @@ app.post('/api/v1/accounts', (req, res) => {
  })
 });
 
+app.get('/api/v1/accounts/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  Accounts.map((Account) => {
+    if (Account.id === id) {
+      return res.status(200).send({
+        success: 'true',
+        message: 'Account retrieved successfully',
+        Account,
+      });
+    } 
+});
+ return res.status(404).send({
+   success: 'false',
+   message: 'Account does not exist',
+  });
+});
+
 const port = process.env.PORT || 4040;
 
 app.get('/', (req, res) => {
