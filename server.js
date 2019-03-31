@@ -1,5 +1,5 @@
 import express from 'express';
-import Accounts from './server/datastore/account';
+import Accounts from './server/datastore/savings';
 import bodyParser from 'body-parser';
 
 
