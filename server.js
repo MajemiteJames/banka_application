@@ -83,6 +83,28 @@ app.get('/api/v1/accounts/:id', (req, res) => {
   });
 });
 
+app.delete('/api/v1/accounts/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+
+  Accounts.map((Account, index) => {
+    if (Account.id === id) {
+       Accounts.splice(index, 1);
+       return res.status(200).send({
+         success: 'true',
+         message: 'Account deleted successfuly',
+       });
+    }
+  });
+
+
+    return res.status(404).send({
+      success: 'false',
+      message: 'Account not found',
+    });
+
+ 
+});
+
 const port = process.env.PORT || 4040;
 
 app.get('/', (req, res) => {
