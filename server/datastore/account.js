@@ -5,9 +5,9 @@
  * @constant
  *
  * @type {Array<Object>}
- * @exports accounts
+ * @exports Accounts
  */
-const accounts = [
+const Accounts = [
     {
       id: 1,
       createdOn: new Date().toISOString(),
@@ -43,4 +43,4 @@ const accounts = [
     },
   ];
   
-  export default accounts;
+  export default Accounts;
