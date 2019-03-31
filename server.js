@@ -105,6 +105,51 @@ app.delete('/api/v1/accounts/:id', (req, res) => {
  
 });
 
+app.put('/api/v1/accounts/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  let accountFound;
+  let itemIndex;
+  Accounts.map((Account, index) => {
+    if (Account.id === id) {
+      accountFound = Account;
+      itemIndex = index;
+    }
+  });
+
+  if (!accountFound) {
+    return res.status(404).send({
+      success: 'false',
+      message: 'Account not found',
+    });
+  }
+
+  if (!req.body.accountNumber) {
+    return res.status(400).send({
+      success: 'false',
+      message: 'accountNumber is required',
+    });
+  } else if (!req.body.status) {
+    return res.status(400).send({
+      success: 'false',
+      message: 'status is required',
+    });
+  }
+
+  const updatedAccount = {
+    id: accountFound.id,
+    accountNumber: req.body.accountNumber || accountFound.accountNumber,
+    status: req.body.status || accountFound.status,
+  };
+
+  Accounts.splice(itemIndex, 1, updatedAccount);
+
+  return res.status(201).send({
+    success: 'true',
+    message: 'Status of Acccount updated successfully',
+    updatedAccount,
+  });
+});
+
 const port = process.env.PORT || 4040;
 
 app.get('/', (req, res) => {
