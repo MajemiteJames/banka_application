@@ -2,35 +2,35 @@
 
 import savings from '../datastore/savings';
 
-class SavingsController {
+class CurrentController {
 
-    getAllSavings(req, res) {
+    getAllCurrent(req, res) {
         return res.status(200).send({
             status: 200,
             success: 'true',
-            message: 'Accounts retrieved successfully',
+            message: 'All Current Accounts retrieved successfully',
             accounts: savings,
         });
       }
 
-      getSavings(req, res) {
+      getCurrent(req, res) {
         const id = parseInt(req.params.id, 10);
         savings.map((Account) => {
             if (Account.id === id) {
               return res.status(200).send({
                 success: 'true',
-                message: 'Account retrieved successfully',
+                message: 'Current Accounts retrieved successfully',
                 Account,
             });
           }
         });
         return res.status(404).send({
             success: 'false',
-            message: 'Account does not exist',
+            message: 'Current Account does not exist',
         });
       }
 
-      createSavings(req, res) {
+      createCurrent(req, res) {
         if(!req.body.firstName) {
             return res.status(400).send({
               success: 'false',
@@ -78,7 +78,7 @@ class SavingsController {
          
       }
 
-      updateSavings(req, res) {
+      updateCurrent(req, res) {
         const id = parseInt(req.params.id, 10);
         let accountFound;
         let itemIndex;
@@ -106,7 +106,7 @@ class SavingsController {
               success: 'false',
               message: 'status is required',
             });
-          }
+          } 
     
           const updatedAccount = {
             id: accountFound.id,
@@ -124,7 +124,7 @@ class SavingsController {
           });
       }
 
-      deleteSavings(req, res) {
+      deleteCurrent(req, res) {
         const id = parseInt(req.params.id, 10);
         let accountFound;
         let itemIndex;
@@ -152,6 +152,5 @@ class SavingsController {
 
 }
   
-  const savingsController = new SavingsController();
-  export default savingsController;
-
+  const currentController = new CurrentController();
+  export default currentController;
