@@ -4,10 +4,11 @@
   "description": "Banka is a light-weight core banking application that powers banking operations like account",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel server --out-dir build",
+    "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
     "dev": "babel-watch server/server.js",
-    "start": "node build/server.js"
+    "start": "node build/server.js",
+    "test": "nyc mocha --require @babel/register --require @babel/polyfill --timeout 1000 --exit"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/MajemiteJames/banka_application#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.4.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4"
   },
@@ -27,9 +29,15 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
+    "@babel/register": "^7.4.0",
     "babel-watch": "^7.0.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "coveralls": "^3.0.3",
     "eslint": "^5.15.3",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0"
+    "eslint-plugin-import": "^2.16.0",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0"
   }
 }
