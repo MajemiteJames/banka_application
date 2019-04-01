@@ -1,5 +1,5 @@
 import express from 'express';
-import router from './server/routes/savings';
+import router from './routes/savings';
 import bodyParser from 'body-parser';
 
 

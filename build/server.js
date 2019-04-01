@@ -2,7 +2,7 @@
 
 var _express = _interopRequireDefault(require("express"));
 
-var _savings = _interopRequireDefault(require("./server/routes/savings"));
+var _savings = _interopRequireDefault(require("./routes/savings"));
 
 var _bodyParser = _interopRequireDefault(require("body-parser"));
 
