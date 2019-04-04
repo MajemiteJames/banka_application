@@ -18,6 +18,7 @@ class SavingsController {
         savings.map((Account) => {
             if (Account.id === id) {
               return res.status(200).send({
+                status: 200,
                 success: 'true',
                 message: 'Account retrieved successfully',
                 Account,
@@ -25,12 +26,23 @@ class SavingsController {
           }
         });
         return res.status(404).send({
+          status: 404,
             success: 'false',
             message: 'Account does not exist',
         });
       }
 
       createSavings(req, res) {
+        if (!req.body.firstName 
+          && !req.body.lastName 
+          && !req.body.email 
+          && !req.body.type) {
+          return res.status(400).json({
+            success: 'false',
+          status: 400,
+          message: 'All fields are required',
+          });
+      }
         if(!req.body.firstName) {
             return res.status(400).send({
               success: 'false',
@@ -65,7 +77,7 @@ class SavingsController {
             lastName: req.body.lastName,
             email: req.body.email,
             type: req.body.type,
-            openingBalance: req.body.openingBalance
+            openingBalance: req.body.openingBalance,
           }
 
           savings.push(Account);
@@ -98,6 +110,7 @@ class SavingsController {
         
           if (!req.body.accountNumber) {
             return res.status(400).send({
+              status: 400,
               success: 'false',
               message: 'accountNumber is required',
             });
@@ -118,6 +131,7 @@ class SavingsController {
           savings.splice(itemIndex, 1, updatedAccount);
         
           return res.status(201).send({
+            status: 201,
             success: 'true',
             message: 'Status of Acccount updated successfully',
             updatedAccount,
@@ -145,7 +159,7 @@ class SavingsController {
     
         return res.status(200).send({
           success: 'true',
-          message: 'Todo deleted successfuly',
+          message: 'Account deleted successfuly',
         });
       }
     
