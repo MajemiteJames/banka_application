@@ -18,6 +18,7 @@ class CurrentController {
         savings.map((Account) => {
             if (Account.id === id) {
               return res.status(200).send({
+                status: 200,
                 success: 'true',
                 message: 'Current Accounts retrieved successfully',
                 Account,
@@ -25,12 +26,23 @@ class CurrentController {
           }
         });
         return res.status(404).send({
-            success: 'false',
-            message: 'Current Account does not exist',
+          status: 404,
+          success: 'false',
+          message: 'Current Account does not exist',
         });
       }
 
       createCurrent(req, res) {
+        if (!req.body.firstName 
+          && !req.body.lastName 
+          && !req.body.email 
+          && !req.body.type) {
+          return res.status(400).json({
+          success: 'false',
+          status: 400,
+          message: 'All fields are required',
+          });
+      }
         if(!req.body.firstName) {
             return res.status(400).send({
               success: 'false',
@@ -98,6 +110,7 @@ class CurrentController {
         
           if (!req.body.accountNumber) {
             return res.status(400).send({
+              status: 400,
               success: 'false',
               message: 'accountNumber is required',
             });
@@ -145,7 +158,7 @@ class CurrentController {
     
         return res.status(200).send({
           success: 'true',
-          message: 'Todo deleted successfuly',
+          message: 'Account deleted successfuly',
         });
       }
     
