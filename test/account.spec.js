@@ -1,21 +1,21 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server/server';
-import savings from '../server/datastore/savings'
+import account from '../server/datastore/account'
 
 
 chai.use(chaiHttp);
 const { expect } = chai;
 
-describe('Savings list Intergration Test', () => {
+describe('Current Account list Intergration Test', () => {
 
   const Account = {
-    id: savings.length + 1,
+    id: account.length + 1,
     accountNumber: parseInt(Math.random()*10000000000, 10),
     firstName: 'john',
     lastName: 'matthew',
     email: 'johnmatthew@getMaxListeners.com',
-    type: 'savings',
+    type: 'current',
     openingBalance: 45.000,
   }
 
@@ -23,7 +23,7 @@ describe('Savings list Intergration Test', () => {
   it('create Account successfully', (done) => {
     chai
     .request(app)
-    .post('/api/v1/accounts/savings')
+    .post('/api/v1/accounts')
     .send(Account)
     .end((err, res) => {
       expect(res.body).to.be.an('object');
@@ -41,33 +41,13 @@ describe('Savings list Intergration Test', () => {
   it('should throw an error if any field is not provided', (done) => {
     const Account = {
       firstName: '',
-      lastName: '',
-      email: '',
-      type: '',
-    }
-      chai.request(app)
-        .post('/api/v1/accounts/savings')
-        .send(Account)
-        .end((err, res) => {
-          expect(res.status).to.equal(400);
-          expect(res.body.success).to.equal('false');
-          expect(res.type).to.equal('application/json');
-          expect(res.body).to.be.an('object');
-          expect(res.body.message).to.equal('All fields are required');
-          done();
-        });
-      });
-
-  it('should throw an error if any field is not provided', (done) => {
-    const Account = {
-      firstName: '',
       lastName: 'matthew',
       email: 'johnmatthew@getMaxListeners.com',
       type: 'savings',
       openingBalance: 45.000,
     }
       chai.request(app)
-        .post('/api/v1/accounts/savings')
+        .post('/api/v1/accounts')
         .send(Account)
         .end((err, res) => {
         expect(res.status).to.equal(400);
@@ -88,7 +68,7 @@ describe('Savings list Intergration Test', () => {
       openingBalance: 45.000,
     }
       chai.request(app)
-        .post('/api/v1/accounts/savings')
+        .post('/api/v1/accounts')
         .send(Account)
         .end((err, res) => {
         expect(res.status).to.equal(400);
@@ -111,7 +91,7 @@ describe('Savings list Intergration Test', () => {
         openingBalance: 45.000,
       }
       chai.request(app)
-        .post('/api/v1/accounts/savings')
+        .post('/api/v1/accounts')
         .send(Account)
         .end((err, res) => {
         expect(res.status).to.equal(400);
@@ -132,7 +112,7 @@ describe('Savings list Intergration Test', () => {
       openingBalance: 45.000,
     }
     chai.request(app)
-      .post('/api/v1/accounts/savings')
+      .post('/api/v1/accounts')
       .send(Account)
       .end((err, res) => {
         expect(res.status).to.equal(400);
@@ -144,10 +124,10 @@ describe('Savings list Intergration Test', () => {
           });
     });
 
-  describe('get all Savings Account', function(){
-    it('should get all Savings Account', (done) => {
+  describe('get all Current Account', function(){
+    it('should get all Current Account', (done) => {
       chai.request(app)
-        .get('/api/v1/accounts/savings')
+        .get('/api/v1/accounts')
         .end((err, res) => {
           expect(res.status).to.equal(200);
           expect(res.type).to.equal('application/json');
@@ -166,13 +146,13 @@ describe('Savings list Intergration Test', () => {
     it('should retrieve the specific Account with given ID', (done) => {
       chai
         .request(app)
-        .get('/api/v1/accounts/savings/4')
+        .get('/api/v1/accounts/2')
         .end((err, res) => {
           expect(res).to.have.status(200);
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.property('status');
           expect(res.body.Account).to.be.an('object');
-          expect(res.body.message).to.equal('Account retrieved successfully');
+          expect(res.body.message).to.equal('Current Accounts retrieved successfully');
           expect(res.type).to.equal('application/json');
           done(err);
           });
@@ -181,23 +161,23 @@ describe('Savings list Intergration Test', () => {
     it('should return an error if Account ID does not exist', (done) => {
       chai
         .request(app)
-        .get('/api/v1/accounts/savings/10')
+        .get('/api/v1/accounts/10')
         .end((err, res) => {
           expect(res).to.have.status(404);
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.property('status');
           expect(res.body.status).to.equal(404);
-          expect(res.body.message).to.equal('Account does not exist');
+          expect(res.body.message).to.equal('Current Account does not exist');
           done(err);
         });
       });
 
-  describe('update a Savings Account', () => {
+  describe('update a Current Account', () => {
     it('update a Savings Account', (done) => {
       chai.request(app)
-        .patch('/api/v1/accounts/savings/4')
+        .patch('/api/v1/accounts/2')
         .send({
-          accountNumber: '5278308307',
+          accountNumber: '3872984638',
           status: 'active',
           openingBalance: 34.900,
         })
@@ -214,7 +194,7 @@ describe('Savings list Intergration Test', () => {
     it('should return an error if accountNumber is not inserted', (done) => {
       chai
         .request(app)
-        .patch('/api/v1/accounts/savings/4')
+        .patch('/api/v1/accounts/2')
         .send({
           accountNumber: '',
           status: 'active',
@@ -232,10 +212,10 @@ describe('Savings list Intergration Test', () => {
       });
   });
 
-  describe('Delete a Savings Account', () => {
-    it('Delete a Savings Account', (done) => {
+  describe('Delete a Current Account', () => {
+    it('Delete a Current Account', (done) => {
       chai.request(app)
-        .delete('/api/v1/accounts/savings/4')
+        .delete('/api/v1/accounts/2')
         .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.type).to.equal('application/json');
@@ -245,9 +225,9 @@ describe('Savings list Intergration Test', () => {
         });
     });
 
-    it('Delete a Savings Account not found', (done) => {
+    it('Delete a Current Account not found', (done) => {
       chai.request(app)
-        .delete('/api/v1/accounts/savings/10')
+        .delete('/api/v1/accounts/10')
         .end((err, res) => {
           expect(res).to.have.status(404);
           expect(res.type).to.equal('application/json');

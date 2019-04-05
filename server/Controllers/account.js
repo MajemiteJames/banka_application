@@ -1,21 +1,21 @@
 /* eslint-disable class-methods-use-this */
 
-import savings from '../datastore/savings';
+import account from '../datastore/account';
 
-class CurrentController {
+class AccountController {
 
-    getAllCurrent(req, res) {
+    getAllAccount(req, res) {
         return res.status(200).send({
             status: 200,
             success: 'true',
             message: 'All Current Accounts retrieved successfully',
-            accounts: savings,
+            accounts: account,
         });
       }
 
-      getCurrent(req, res) {
+      getAccount(req, res) {
         const id = parseInt(req.params.id, 10);
-        savings.map((Account) => {
+        account.map((Account) => {
             if (Account.id === id) {
               return res.status(200).send({
                 status: 200,
@@ -32,17 +32,7 @@ class CurrentController {
         });
       }
 
-      createCurrent(req, res) {
-        if (!req.body.firstName 
-          && !req.body.lastName 
-          && !req.body.email 
-          && !req.body.type) {
-          return res.status(400).json({
-          success: 'false',
-          status: 400,
-          message: 'All fields are required',
-          });
-      }
+      createAccount(req, res) {
         if(!req.body.firstName) {
             return res.status(400).send({
               success: 'false',
@@ -63,24 +53,20 @@ class CurrentController {
               success: 'false',
               message: 'The type of Account is required'
             });
-          }  else if(!req.body.openingBalance) {
-            return res.status(400).send({
-              success: 'false',
-              message: 'Kindly put the openingBalance'
-            });
-          }
+          } 
 
         const Account = {
-            id: savings.length + 1,
+            id: account.length + 1,
             accountNumber: parseInt(Math.random()*10000000000, 10),
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
             type: req.body.type,
-            openingBalance: req.body.openingBalance
+            status: "Draft",
+            openingBalance: 0.00,
           }
 
-          savings.push(Account);
+          account.push(Account);
           return res.status(201).send({
             status: 201,
             success: 'true',
@@ -90,11 +76,11 @@ class CurrentController {
          
       }
 
-      updateCurrent(req, res) {
+      updateAccount(req, res) {
         const id = parseInt(req.params.id, 10);
         let accountFound;
         let itemIndex;
-        savings.map((Account, index) => {
+        account.map((Account, index) => {
           if (Account.id === id) {
             accountFound = Account;
             itemIndex = index;
@@ -128,7 +114,7 @@ class CurrentController {
             openingBalance: req.body.openingBalance || accountFound.openingBalance,
           };
         
-          savings.splice(itemIndex, 1, updatedAccount);
+          account.splice(itemIndex, 1, updatedAccount);
         
           return res.status(201).send({
             success: 'true',
@@ -137,11 +123,11 @@ class CurrentController {
           });
       }
 
-      deleteCurrent(req, res) {
+      deleteAccount(req, res) {
         const id = parseInt(req.params.id, 10);
         let accountFound;
         let itemIndex;
-        savings.map((Account, index) => {
+        account.map((Account, index) => {
           if (Account.id === id) {
             accountFound = Account;
             itemIndex = index;
@@ -154,7 +140,7 @@ class CurrentController {
             message: 'Account not found',
           });
         }
-        savings.splice(itemIndex, 1);
+        account.splice(itemIndex, 1);
     
         return res.status(200).send({
           success: 'true',
@@ -165,5 +151,5 @@ class CurrentController {
 
 }
   
-  const currentController = new CurrentController();
-  export default currentController;
+  const accountController = new AccountController();
+  export default accountController;

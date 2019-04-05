@@ -17,7 +17,7 @@ const Accounts = [
       email: 'ayomidetosan@gmail.com',
       type: 'savings',
       status: 'draft',
-      openingBalance: 15000.00,
+      openingBalance: 0.00,
     },
     {
       id: 2,
