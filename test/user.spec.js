@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import chaiHttp from 'chai-http';
 import chai, { expect } from 'chai';
+
 import User from '../server/datastore/users';
 
 import app from '../server/server';
@@ -9,13 +10,16 @@ chai.use(chaiHttp);
 
 describe('Testing User Controller', () => {
   describe('Testing signup controller', () => {
+
     const signupUrl = '/api/v1/auth/signup';
+
     it(
       'should register a new user when all the parameters are given',
       (done) => {
         chai.request(app)
           .post(signupUrl)
           .send({
+
             id: User.length + 1,
             firstName: 'James',
             lastName: 'Okoro',
