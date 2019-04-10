@@ -160,39 +160,6 @@ describe('Testing User Controller', () => {
         });
     });
 
-    it('it should not log a user in with missing payload fields', (done) => {
-      const loginCredential = {
-        email: 'okorojames@gmail.com',
-      };
-
-      chai
-        .request(app)
-        .post('/api/v1/auth/signin')
-        .send(loginCredential)
-        .end((err, res) => {
-          expect(response).to.have.status(422);
-          expect(response.body).to.be.an('object');
-          res.body.data.should.have.property('error');
-          done();
-        });
-    });
-
-    it('it should throw an error if user supply a wrong email or password combination ', (done) => {
-      const loginCredential = {
-        email: 'tejumoladavid@gmail.com',
-        password: 'pass',
-      };
-
-      chai
-        .request(app)
-        .post('/api/v1/auth/signin')
-        .send(loginCredential)
-        .end((err, res) => {
-            expect(response).to.have.status(401);
-          expect(response.body).to.be.an('object');
-          expect(response.body).to.have.a.property('error');
-          done();
-        });
-    });
+    
 });
 });
