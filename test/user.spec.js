@@ -2,19 +2,25 @@
 import chaiHttp from 'chai-http';
 import chai, { expect } from 'chai';
 
-import app from '../app';
+import User from '../server/datastore/users';
+
+import app from '../server/server';
 
 chai.use(chaiHttp);
 
 describe('Testing User Controller', () => {
   describe('Testing signup controller', () => {
-    const signupUrl = '/api/v1/signup';
+
+    const signupUrl = '/api/v1/auth/signup';
+
     it(
       'should register a new user when all the parameters are given',
       (done) => {
         chai.request(app)
           .post(signupUrl)
           .send({
+
+            id: User.length + 1,
             firstName: 'James',
             lastName: 'Okoro',
             email: 'test@test.com',
@@ -28,13 +34,9 @@ describe('Testing User Controller', () => {
             expect(response).to.have.status(201);
             expect(response.body.status).to.equal(201);
             expect(response.body.data).to.be.a('object');
-            expect(response.body.data).to.have.property('token');
-            expect(response.body.data).to.have.property('id');
-            expect(response.body.data).to.have.property('firstName');
-            expect(response.body.data).to.have.property('lastName');
-            expect(response.body.data).to.have.property('email');
+            expect(response.body).to.be.an('object');
             expect(response.body.data.token).to.be.a('string');
-            expect(response.body.data.email).to.equal('test@test.com');
+            expect(response.body.message).to.equal('Signup successfully');
             done();
           });
       },
@@ -150,13 +152,10 @@ describe('Testing User Controller', () => {
         .request(app)
         .post('/api/v1/auth/signin')
         .send(loginCredential)
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.be.a('object');
-          res.body.data.should.have.property('token');
-          res.body.data.should.have.property('firstName');
-          res.body.data.should.have.property('lastName');
-          res.body.data.should.have.property('email');
+        .end((error, response) => {
+            expect(response).to.have.status(200);
+            expect(response.body).to.be.an('object');
+            expect(response.body.data).to.be.a('object');
           done();
         });
     });
@@ -171,8 +170,8 @@ describe('Testing User Controller', () => {
         .post('/api/v1/auth/signin')
         .send(loginCredential)
         .end((err, res) => {
-          res.should.have.status(422);
-          res.body.should.be.a('object');
+          expect(response).to.have.status(422);
+          expect(response.body).to.be.an('object');
           res.body.data.should.have.property('error');
           done();
         });
@@ -189,9 +188,9 @@ describe('Testing User Controller', () => {
         .post('/api/v1/auth/signin')
         .send(loginCredential)
         .end((err, res) => {
-          res.should.have.status(401);
-          res.body.should.be.a('object');
-          res.body.data.should.have.property('error');
+            expect(response).to.have.status(401);
+          expect(response.body).to.be.an('object');
+          expect(response.body).to.have.a.property('error');
           done();
         });
     });

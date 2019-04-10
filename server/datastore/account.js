@@ -1,7 +1,7 @@
 /* eslint linebreak-style: "off" */
 
 /**
- * a list of all red-flags and incidents
+ * a list of all Accounts
  * @constant
  *
  * @type {Array<Object>}

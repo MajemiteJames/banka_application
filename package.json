@@ -8,7 +8,7 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
     "dev": "babel-watch server/server.js",
     "start": "node build/server.js",
-    "test": "nyc mocha --require @babel/register --require @babel/polyfill --timeout 1000 --exit"
+    "test": "nyc mocha --require @babel/register --require @babel/polyfill --timeout 5000 --exit"
   },
   "repository": {
     "type": "git",
@@ -22,8 +22,10 @@
   "homepage": "https://github.com/MajemiteJames/banka_application#readme",
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
+    "bcrypt": "^3.0.5",
     "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
