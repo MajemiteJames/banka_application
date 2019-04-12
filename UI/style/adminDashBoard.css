@@ -383,6 +383,77 @@ table th {
   width: 80px;
   margin-right: 20px;
 }
+@media(max-width:1366px) {
+  .bckg {
+    background-color:#0077ff;
+    box-shadow:-4px 0px 10px rgba(14, 14, 14, 0.48) inset;
+    width:210px;
+    height:100%;
+    position:fixed;
+    left:0;
+    top:0;
+  }
+  table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    padding: 0;
+    width: 75%;
+    table-layout: fixed;
+    margin: auto;
+    margin-top: 5%;
+  }
+  table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 30px;
+  }
+            
+  table th,
+  table td {
+    padding: 15px;
+    text-align: center;
+    padding-left: -5px;
+    padding-right: -5px;
+  }
+  .btn {
+    background-color: rgb(255, 30, 30);
+    border: none;
+    color: white;
+    padding: 10px 9px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+            
+}
+@media(max-width:1240px) {
+  table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    padding: 0;
+    width: 77%;
+    table-layout: fixed;
+    margin: auto;
+    margin-top: 5%;
+  }
+  table th,
+  table td {
+    padding: 5px;
+    text-align: center;
+    padding-left: -5px;
+    padding-right: -5px;
+  }
+  .btn {
+    background-color: rgb(255, 30, 30);
+    border: none;
+    color: white;
+    padding: 10px 9px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: -5px;
+}
+}
    
 @media(max-width:1081px) {
   .overviewTable{
@@ -419,6 +490,60 @@ table th {
     top:0;
   }
 
+}
+@media(max-width:991px) {
+  .bckg {
+    background-color:#0077ff;
+    box-shadow:-4px 0px 10px rgba(14, 14, 14, 0.48) inset;
+    width:205px;
+    height:67%;
+    left:0;
+    top:0;
+    visibility: hidden;
+  }
+  h1 {
+    color:#0077ff;
+  }
+  table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    padding: 0;
+    width: 90%;
+    margin-top: 5%;
+    float: left;
+    margin-left: -15%;
+  }
+  table th,
+  table td {
+    padding: 5px;
+    text-align: center;
+    padding-left: 35px;
+    padding-right: -5px;
+  }
+
+}
+
+@media(max-width:800px) {
+  table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    padding: 0;
+    width: 99%;
+    margin-top: 5%;
+    float: left;
+    margin-left: -25%;
+  }
+}
+@media(max-width:765px) {
+  table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    padding: 0;
+    width: 99%;
+    margin-top: -15%;
+    float: left;
+    margin-left: -7%;
+  }
 }
           
 @media screen and (max-width: 600px) {
@@ -473,5 +598,10 @@ table td:last-child {
     position:fixed;
     left:0;
     top:0;
+  }
+}
+@media screen and (max-width: 320px) {
+  fieldset {
+    
   }
 }
