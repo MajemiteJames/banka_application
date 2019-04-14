@@ -14,9 +14,9 @@ class AccountController {
       }
 
       getAccount(req, res) {
-        const id = parseInt(req.params.id, 10);
+        const accountNumber = parseInt(req.params.accountNumber, 10);
         account.map((Account) => {
-            if (Account.id === id) {
+            if (Account.accountNumber === accountNumber) {
               return res.status(200).send({
                 status: 200,
                 success: 'true',
@@ -77,11 +77,11 @@ class AccountController {
       }
 
       updateAccount(req, res) {
-        const id = parseInt(req.params.id, 10);
+        const accountNumber = parseInt(req.params.accountNumber, 10);
         let accountFound;
         let itemIndex;
         account.map((Account, index) => {
-          if (Account.id === id) {
+          if (Account.accountNumber === accountNumber) {
             accountFound = Account;
             itemIndex = index;
           }
@@ -124,11 +124,11 @@ class AccountController {
       }
 
       deleteAccount(req, res) {
-        const id = parseInt(req.params.id, 10);
+        const accountNumber = parseInt(req.params.accountNumber, 10);
         let accountFound;
         let itemIndex;
         account.map((Account, index) => {
-          if (Account.id === id) {
+          if (Account.accountNumber === accountNumber) {
             accountFound = Account;
             itemIndex = index;
           }
@@ -140,7 +140,7 @@ class AccountController {
             message: 'Account not found',
           });
         }
-        account.splice(itemIndex, 1);
+        account.splice(itemIndex, 3);
     
         return res.status(200).send({
           success: 'true',

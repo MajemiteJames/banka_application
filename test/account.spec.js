@@ -137,7 +137,6 @@ describe('Current Account list Intergration Test', () => {
           expect(res.body.accounts).to.be.an('array');
           expect(res.body.accounts.length).to.not.equal(0);
           expect(res.body.accounts).to.be.an('array');
-          //console.log(res.body);
           done();
             });
           });
@@ -146,7 +145,7 @@ describe('Current Account list Intergration Test', () => {
     it('should retrieve the specific Account with given ID', (done) => {
       chai
         .request(app)
-        .get('/api/v1/accounts/2')
+        .get('/api/v1/accounts/2578433446')
         .end((err, res) => {
           expect(res).to.have.status(200);
           expect(res.body).to.be.an('object');
@@ -154,6 +153,7 @@ describe('Current Account list Intergration Test', () => {
           expect(res.body.Account).to.be.an('object');
           expect(res.body.message).to.equal('Current Accounts retrieved successfully');
           expect(res.type).to.equal('application/json');
+          //console.log(Account);
           done(err);
           });
         });
@@ -161,7 +161,7 @@ describe('Current Account list Intergration Test', () => {
     it('should return an error if Account ID does not exist', (done) => {
       chai
         .request(app)
-        .get('/api/v1/accounts/10')
+        .get('/api/v1/accounts/25784334460')
         .end((err, res) => {
           expect(res).to.have.status(404);
           expect(res.body).to.be.an('object');
@@ -175,9 +175,9 @@ describe('Current Account list Intergration Test', () => {
   describe('update a Current Account', () => {
     it('update a Savings Account', (done) => {
       chai.request(app)
-        .patch('/api/v1/accounts/2')
+        .patch('/api/v1/accounts/2578433446')
         .send({
-          accountNumber: '3872984638',
+          accountNumber: '2578433446',
           status: 'active',
           openingBalance: 34.900,
         })
@@ -194,7 +194,7 @@ describe('Current Account list Intergration Test', () => {
     it('should return an error if accountNumber is not inserted', (done) => {
       chai
         .request(app)
-        .patch('/api/v1/accounts/2')
+        .patch('/api/v1/accounts/3872984638')
         .send({
           accountNumber: '',
           status: 'active',
@@ -212,22 +212,9 @@ describe('Current Account list Intergration Test', () => {
       });
   });
 
-  describe('Delete a Current Account', () => {
-    it('Delete a Current Account', (done) => {
-      chai.request(app)
-        .delete('/api/v1/accounts/2')
-        .end((err, res) => {
-        expect(res).to.have.status(200);
-        expect(res.type).to.equal('application/json');
-        expect(res.body).to.be.an('object');
-        expect(res.body.message).to.equal('Account deleted successfuly');
-        done(err);
-        });
-    });
-
     it('Delete a Current Account not found', (done) => {
       chai.request(app)
-        .delete('/api/v1/accounts/10')
+        .delete('/api/v1/accounts/38729846380')
         .end((err, res) => {
           expect(res).to.have.status(404);
           expect(res.type).to.equal('application/json');
@@ -236,7 +223,6 @@ describe('Current Account list Intergration Test', () => {
           done(err);
         });
     });
-  });
                               
 
 

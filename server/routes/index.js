@@ -16,13 +16,13 @@ router.post('/api/v1/auth/signin', Users.login);
 
 
 
-router.get('/api/v1/accounts/:id', accountController.getAccount);
+router.get('/api/v1/accounts/:accountNumber', accountController.getAccount);
 
   
-router.delete('/api/v1/accounts/:id', accountController.deleteAccount);
+router.delete('/api/v1/accounts/:accountNumber', accountController.deleteAccount);
 //router.delete('/api/v1/accounts/:id', Users.deleteUser);
   
 
-router.patch('/api/v1/accounts/:id', accountController.updateAccount);
+router.patch('/api/v1/accounts/:accountNumber', accountController.updateAccount);
 
   export default router;
