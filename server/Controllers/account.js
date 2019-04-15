@@ -77,6 +77,19 @@ class AccountController {
       }
 
       updateAccount(req, res) {
+        if (!req.body.accountNumber) {
+          return res.status(400).send({
+            status: 400,
+            success: 'false',
+            message: 'accountNumber is required',
+          });
+        } else if (!req.body.status) {
+          return res.status(400).send({
+            status: 400,
+            success: 'false',
+            message: 'status is required',
+          });
+        } 
         const accountNumber = parseInt(req.params.accountNumber, 10);
         let accountFound;
         let itemIndex;
@@ -86,27 +99,7 @@ class AccountController {
             itemIndex = index;
           }
         });
-    
-        if (!accountFound) {
-            return res.status(404).send({
-              success: 'false',
-              message: 'Account not found',
-            });
-          }
-        
-          if (!req.body.accountNumber) {
-            return res.status(400).send({
-              status: 400,
-              success: 'false',
-              message: 'accountNumber is required',
-            });
-          } else if (!req.body.status) {
-            return res.status(400).send({
-              success: 'false',
-              message: 'status is required',
-            });
-          } 
-    
+        if(accountFound) {
           const updatedAccount = {
             id: accountFound.id,
             accountNumber: req.body.accountNumber || accountFound.accountNumber,
@@ -121,6 +114,16 @@ class AccountController {
             message: 'Status of Acccount updated successfully',
             updatedAccount,
           });
+        }
+    
+        if (!accountFound) {
+            return res.status(404).send({
+              success: 'false',
+              message: 'Account not found',
+            });
+          }
+      
+    
       }
 
       deleteAccount(req, res) {
@@ -133,6 +136,13 @@ class AccountController {
             itemIndex = index;
           }
         });
+        if(accountFound) {
+          account.splice(itemIndex, 3);
+          return res.status(200).send({
+            success: 'true',
+            message: 'Account deleted successfuly',
+          });
+        }
     
         if (!accountFound) {
           return res.status(404).send({
@@ -140,12 +150,8 @@ class AccountController {
             message: 'Account not found',
           });
         }
-        account.splice(itemIndex, 3);
+        
     
-        return res.status(200).send({
-          success: 'true',
-          message: 'Account deleted successfuly',
-        });
       }
     
 

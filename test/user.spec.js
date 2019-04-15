@@ -42,25 +42,6 @@ describe('Testing User Controller', () => {
       },
     );
 
-    it('should not register a user when the email is missing', (done) => {
-      chai.request(app)
-        .post(signupUrl)
-        .send({
-          firstName: 'michael',
-          lastName: 'Umanah',
-          username: 'michael123',
-          password: 'password',
-          confirmPassword: 'password',
-        })
-        .end((error, response) => {
-          expect(response.body).to.be.an('object');
-          expect(response.body.status).to.equal(400);
-          expect(response.body.error).to.be.a('string');
-          expect(response.body.error).to.equal('Email is required');
-          done();
-        });
-    });
-
     it('should not register a user when the first name is missing', (done) => {
       chai.request(app)
         .post(signupUrl)
@@ -94,6 +75,24 @@ describe('Testing User Controller', () => {
           expect(response.body.status).to.equal(400);
           expect(response.body.error).to.be.a('string');
           expect(response.body.error).to.equal('Last name is required');
+          done();
+        });
+    });
+    it('should not register a user when the email is missing', (done) => {
+      chai.request(app)
+        .post(signupUrl)
+        .send({
+          firstName: 'michael',
+          lastName: 'Umanah',
+          username: 'michael123',
+          password: 'password',
+          confirmPassword: 'password',
+        })
+        .end((error, response) => {
+          expect(response.body).to.be.an('object');
+          expect(response.body.status).to.equal(400);
+          expect(response.body.error).to.be.a('string');
+          expect(response.body.error).to.equal('Email is required');
           done();
         });
     });
@@ -160,6 +159,26 @@ describe('Testing User Controller', () => {
         });
     });
 
+    it('should not register a user when the email is missing', (done) => {
+      chai.request(app)
+        .post('/api/v1/auth/signin')
+        .send({
+          firstName: 'michael',
+          lastName: 'Umanah',
+          username: 'michael123',
+          password: 'password',
+          confirmPassword: 'password',
+        })
+        .end((error, response) => {
+          expect(response.body).to.be.an('object');
+          expect(response.body.status).to.equal(400);
+          expect(response.body.error).to.be.a('string');
+          expect(response.body.error).to.equal('Email is required');
+          done();
+        });
+    });
+
+  
     
 });
 });

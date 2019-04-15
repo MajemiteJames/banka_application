@@ -173,6 +173,44 @@ describe('Current Account list Intergration Test', () => {
       });
 
   describe('update a Current Account', () => {
+    it('should return an error if accountNumber is not inserted', (done) => {
+      chai
+        .request(app)
+        .patch('/api/v1/accounts/2578433446')
+        .send({
+          accountNumber: '',
+          status: 'active',
+          openingBalance: 34.900,
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(400);
+          expect(res.body).to.be.an('object');
+          expect(res.type).to.equal('application/json');
+          //expect(res.body).to.have.property('status');
+          expect(res.body.status).to.equal(400);
+          expect(res.body.message).to.equal('accountNumber is required');
+          done(err);
+          });
+      });
+      it('should return an error if status is not inserted', (done) => {
+        chai
+          .request(app)
+          .patch('/api/v1/accounts/2578433446')
+          .send({
+            accountNumber: '2578433446',
+            status: '',
+            openingBalance: 34.900,
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(400);
+            expect(res.body).to.be.an('object');
+            expect(res.type).to.equal('application/json');
+            //expect(res.body).to.have.property('status');
+            expect(res.body.status).to.equal(400);
+            expect(res.body.message).to.equal('status is required');
+            done(err);
+            });
+        });
     it('update a Savings Account', (done) => {
       chai.request(app)
         .patch('/api/v1/accounts/2578433446')
@@ -191,25 +229,6 @@ describe('Current Account list Intergration Test', () => {
         });
       });
 
-    it('should return an error if accountNumber is not inserted', (done) => {
-      chai
-        .request(app)
-        .patch('/api/v1/accounts/3872984638')
-        .send({
-          accountNumber: '',
-          status: 'active',
-          openingBalance: 34.900,
-        })
-        .end((err, res) => {
-          expect(res).to.have.status(400);
-          expect(res.body).to.be.an('object');
-          expect(res.type).to.equal('application/json');
-          //expect(res.body).to.have.property('status');
-          expect(res.body.status).to.equal(400);
-          expect(res.body.message).to.equal('accountNumber is required');
-          done(err);
-          });
-      });
   });
 
     it('Delete a Current Account not found', (done) => {
