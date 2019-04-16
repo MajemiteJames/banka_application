@@ -1,6 +1,7 @@
 import express from 'express';
 import accountController from '../Controllers/account';
 import Users from '../Controllers/users';
+import transactionController from '../Controllers/transaction';
 
 
 const router = express.Router();
@@ -10,6 +11,8 @@ router.get('/api/v1/accounts', accountController.getAllAccount);
 
   
 router.post('/api/v1/accounts', accountController.createAccount);
+router.post('/api/v1/transactions/:accountNumber/credit', transactionController.createCredit);
+router.post('/api/v1/transactions/:accountNumber/debit', transactionController.debitAccount);
 router.post('/api/v1/auth/signup', Users.signup);
 router.post('/api/v1/auth/signin', Users.login);
 
