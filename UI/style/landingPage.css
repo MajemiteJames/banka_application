@@ -33,14 +33,7 @@ img {
 	margin-top: 24%;
 	background: rgba(152, 152, 152, 0.7);
 }
-.login {
-	text-align: center;
-}
-.login-box{
-	transition: all 200ms;
-	opacity: 0.5;
-	background-color: #fff;
-}
+
 .login input {
     padding: 15px;
 }
@@ -49,11 +42,11 @@ img {
 }
 .left-box
 {
-    position: absolute;
+    position: relative;
     box-sizing: border-box;
     padding: 50px;
 	width: 550px;  
-	height: 350px; 
+	height: 390px; 
 	margin-top: 30px;
 	background: rgba(152, 152, 152, 0.7);
 }
@@ -261,13 +254,14 @@ input.checked {
 	font-size: 10px;
 	color: #fff;
 	font-weight: 500;
-	margin-top: -35px;
-	margin-left: 5%;
+	margin-top: -25px;
+	margin-left: 14%;
 }
 h4 {
 	font-size: 30px;
 	margin-top: -13px;font-family: 'Source Sans Pro', sans-serif;
 	color: #fff;
+	margin-left: 45%;
 }
 .btnn-login {
 	float: left;
@@ -289,7 +283,7 @@ h4 {
 	display: inline-block;
 	letter-spacing: 2px;
 	outline: none;
-	padding-left: 8px;
+	padding-left: 9px;
 }
 
 /*--//background --*/
