@@ -8,7 +8,7 @@ const app = express();
 // Parse incoming requests data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(router);
+app.use('/api/v1', router);
 
 
 const port = process.env.PORT || 4040;
