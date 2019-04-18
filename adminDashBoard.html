@@ -1,202 +1,210 @@
 <DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>profile</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="style/adminDashBoard.css">
-    </head>
-    <body>
-        <span class="bckg"></span>
-        <header>
-          <h1>Admin</h1>
-          <nav>
-            <ul>
-                  <li>
-                    <a href="landingPage.html" data-title="Log Out">Log Out</a>
-                  </li>
-            </ul>
-            <ul>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>profile</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="style/adminDashBoard.css">
+  </head>
+  <body>
+      <span class="bckg"></span>
+      <header>
+        <h1>Admin</h1>
+        <nav>
+          <ul>
                 <li>
-                  <a href="landingPage.html" data-title="Log Out">Create Account</a>
+                  <a href="landingPage.html" data-title="Log Out">Log Out</a>
                 </li>
           </ul>
-          <ul>
-              <li>
-                <a href="landingPage.html" data-title="Log Out">Perform Transaction</a>
-              </li>
-        </ul>
-          </nav>
-            <div>
-        </div>
-        <!-- popup-->
-        <div id="content1" class="popup-effect">
-          <div class="popup">
-             <!--login form-->
-             <div class="letter">
-                <form>
-                   <div class="form-left">
-                      <input type="text" name="name" placeholder="Firstname" required/>
-                   </div>
-                   <div class="form-left">
-                       <input type="text" name="name" placeholder="Lastname" required/>
-                   </div>
-                   <div class="form-left">
-                      <input type="email" name="email" placeholder="Email" required/>
-                   </div>
-                   <div class="styled-select slate">
-                    <select>
-                      <option>Type of Staff</option>
-                      <option>Admin</option>
-                      <option>Cashier</option>
-                    </select>
-                  </div>
-                   <div class="btnn">
-                      <button type="submit">Done</button>
-                      <br>
-                   </div>
-                </form>
-                <div class="clear"></div>
-             </div>
-             <!--//login form-->
-             <a class="close" href="#">&times;</a>
+          
+    <div class="left-content">
+      <div>
+          <div>
+              <button type="button" class="nav"><a href="#content1">Create Account</a></button>
           </div>
-       </div>
-       <!-- //popup -->
-        </header>
-        <div id="content2"  class="popup-effect">
-          <div class="popup">
-        <fieldset>
-            <legend>Make a Transaction</legend>
-            <div class="transactionBox">
-              <form action="">
-                <label for="AC">Account Number:</label>
-                <input type="text" id="fname" name="Account Number" placeholder="Account Number">
-            
-                <label for="lname">Amount</label>
-                <input type="text" id="lname" name="Amount" placeholder="Amount">
-            
-                <label for="country">Select a Transaction</label>
-                <select id="country" name="country">
-                  <option value="australia">Deposit</option>
-                  <option value="canada">Credit</option>
-                </select>
-              
-                <input type="submit" value="Submit">
+      </div>
+  </div>
+  <div class="left-content">
+    <div>
+        <div>
+            <button type="button" class="nav"><a href="#content2">Perform Transaction</a></button>
+        </div>
+    </div>
+</div>
+        </nav>
+          <div>
+      </div>
+      <!-- popup-->
+      <div id="content1" class="popup-effect">
+        <div class="popup">
+           <!--login form-->
+           <div class="letter">
+              <form>
+                 <div class="form-left">
+                    <input type="text" name="name" placeholder="Firstname" required/>
+                 </div>
+                 <div class="form-left">
+                     <input type="text" name="name" placeholder="Lastname" required/>
+                 </div>
+                 <div class="form-left">
+                    <input type="email" name="email" placeholder="Email" required/>
+                 </div>
+                 <div class="styled-select slate">
+                  <select>
+                    <option>Type of Staff</option>
+                    <option>Admin</option>
+                    <option>Cashier</option>
+                  </select>
+                </div>
+                 <div class="btnn">
+                    <button type="submit">Done</button>
+                    <br>
+                 </div>
               </form>
-            </div>
-        </fieldset>
-        <div class="clear"></div>
-      </div>
-      <!--//login form-->
-      <a class="close" href="#">&times;</a>
-      </div>
-      </div>
-        <table>
-                <thead>
-                  <tr>
-                    <th scope="col">Date created</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Account Number</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Balance</th>
-                    <th class="status" scope="col">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <a href=""><td data-label="Date created">12/4/2018</td></a>
-                    <td data-label="Username"> <a href="userProfile.html">Mark Taylor</a></td>
-                    <td data-label="Account Number">1234567890</td>
-                    <td data-label="Type">Savings</td>
-                    <td data-label="Balance">₦333.283</td>
-                    <td class="test">
+              <div class="clear"></div>
+           </div>
+           <!--//login form-->
+           <a class="close" href="#">&times;</a>
+        </div>
+     </div>
+     <!-- //popup -->
+      </header>
+      <div id="content2"  class="popup-effect">
+        <div class="popup">
+      <fieldset>
+          <legend>Make a Transaction</legend>
+          <div class="transactionBox">
+            <form action="">
+              <label for="AC">Account Number:</label>
+              <input type="text" id="fname" name="Account Number" placeholder="Account Number">
+          
+              <label for="lname">Amount</label>
+              <input type="text" id="lname" name="Amount" placeholder="Amount">
+          
+              <label for="country">Select a Transaction</label>
+              <select id="country" name="country">
+                <option value="australia">Deposit</option>
+                <option value="canada">Credit</option>
+              </select>
+            
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+      </fieldset>
+      <div class="clear"></div>
+    </div>
+    <!--//login form-->
+    <a class="close" href="#">&times;</a>
+    </div>
+    </div>
+    <div class="heading">
+      <h4>Overview of All Accounts</h4>
+  </div>
+      <table>
+              <thead>
+                <tr>
+                  <th scope="col">Date created</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Account Number</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Balance</th>
+                  <th class="status" scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <a href=""><td data-label="Date created">12/4/2018</td></a>
+                  <td data-label="Username"> <a href="userProfile.html">Mark Taylor</a></td>
+                  <td data-label="Account Number">1234567890</td>
+                  <td data-label="Type">Savings</td>
+                  <td data-label="Balance">₦333.283</td>
+                  <td class="test">
+                    <select class="required">
+                      <option value="1">Draft
+                      <option value="2">Active
+                          <option value="3">Dormant
+                    </select>
+                    <button class="btn"><i class="fa fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <a href=""><td data-label="Date created">12/4/2018</td></a>
+                  <td data-label="Username"> <a href="userProfile.html">Mark Taylor</a></td>
+                  <td data-label="Account Number">1234567890</td>
+                  <td data-label="Type">Savings</td>
+                  <td data-label="Balance">₦333.283</td>
+                  <td class="test">
                       <select class="required">
-                        <option value="1">Draft
-                        <option value="2">Active
-                            <option value="3">Dormant
-                      </select>
-                      <button class="btn"><i class="fa fa-trash"></i></button>
+                          <option value="1">Draft
+                          <option value="2">Active
+                          <option value="3">Dormant
+                        </select>
+                        <button class="btn"><i class="fa fa-trash"></i></button>
                     </td>
-                  </tr>
-                  <tr>
-                    <a href=""><td data-label="Date created">12/4/2018</td></a>
-                    <td data-label="Username"> <a href="userProfile.html">Mark Taylor</a></td>
-                    <td data-label="Account Number">1234567890</td>
-                    <td data-label="Type">Savings</td>
-                    <td data-label="Balance">₦333.283</td>
-                    <td class="test">
+                </tr>
+                <tr>
+                  <a href=""><td data-label="Date created">12/4/2018</td></a>
+                  <td data-label="Username"> <a href="userProfile.html">Mark Taylor</a></td>
+                  <td data-label="Account Number">1234567890</td>
+                  <td data-label="Type">Savings</td>
+                  <td data-label="Balance">₦333.283</td>
+                      <td class="test">
                         <select class="required">
-                            <option value="1">Draft
-                            <option value="2">Active
-                            <option value="3">Dormant
-                          </select>
-                          <button class="btn"><i class="fa fa-trash"></i></button>
+                          <option value="1">Draft
+                          <option value="2">Active
+                          <option value="3">Dormant
+                        </select>
+                        <button class="btn"><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                  <a href=""><td data-label="Date created">12/4/2018</td></a>
+                  <td data-label="Username"> <a href="userProfile.html">Mark Taylor</a></td>
+                  <td data-label="Account Number">1234567890</td>
+                  <td data-label="Type">Current</td>
+                  <td data-label="Balance">₦333.283</td>
+                      <td class="test">
+                        <select class="required">
+                          <option value="1">Draft
+                          <option value="2">Active
+                              <option value="3">Dormant
+                        </select>
+                        <button class="btn"><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                  <a href=""><td data-label="Date created">12/4/2018</td></a>
+                  <td data-label="Username"> <a href="userProfile.html">Mark Taylor</a></td>
+                  <td data-label="Account Number">1234567890</td>
+                  <td data-label="Type">Savings</td>
+                  <td data-label="Balance">₦333.283</td>
+                      <td class="test">
+                        <select class="required">
+                          <option value="1">Draft
+                          <option value="2">Active
+                          <option value="3">Dormant
+                        </select>
+                        <button class="btn"><i class="fa fa-trash"></i></button>
                       </td>
                   </tr>
                   <tr>
-                    <a href=""><td data-label="Date created">12/4/2018</td></a>
-                    <td data-label="Username"> <a href="userProfile.html">Mark Taylor</a></td>
-                    <td data-label="Account Number">1234567890</td>
-                    <td data-label="Type">Savings</td>
-                    <td data-label="Balance">₦333.283</td>
-                        <td class="test">
-                          <select class="required">
-                            <option value="1">Draft
-                            <option value="2">Active
-                            <option value="3">Dormant
-                          </select>
-                          <button class="btn"><i class="fa fa-trash"></i></button>
-                      </td>
-                  </tr>
-                  <tr>
-                    <a href=""><td data-label="Date created">12/4/2018</td></a>
-                    <td data-label="Username"> <a href="userProfile.html">Mark Taylor</a></td>
-                    <td data-label="Account Number">1234567890</td>
-                    <td data-label="Type">Current</td>
-                    <td data-label="Balance">₦333.283</td>
-                        <td class="test">
-                          <select class="required">
-                            <option value="1">Draft
-                            <option value="2">Active
-                                <option value="3">Dormant
-                          </select>
-                          <button class="btn"><i class="fa fa-trash"></i></button>
-                      </td>
-                  </tr>
-                  <tr>
-                    <a href=""><td data-label="Date created">12/4/2018</td></a>
-                    <td data-label="Username"> <a href="userProfile.html">Mark Taylor</a></td>
-                    <td data-label="Account Number">1234567890</td>
-                    <td data-label="Type">Savings</td>
-                    <td data-label="Balance">₦333.283</td>
-                        <td class="test">
-                          <select class="required">
-                            <option value="1">Draft
-                            <option value="2">Active
-                            <option value="3">Dormant
-                          </select>
-                          <button class="btn"><i class="fa fa-trash"></i></button>
+                      <a href=""><td data-label="Date created">12/4/2018</td></a>
+                      <td data-label="Username"> <a href="userProfile.html">Mark Taylor</a></td>
+                      <td data-label="Account Number">1234567890</td>
+                      <td data-label="Type">Current</td>
+                      <td data-label="Balance">₦333.283</td>
+                          <td class="test">
+                            <select class="required">
+                              <option value="1">Draft
+                              <option value="2">Active
+                                  <option value="3">Dormant
+                            </select>
+                            <button class="btn"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>
-                    <tr>
-                        <a href=""><td data-label="Date created">12/4/2018</td></a>
-                        <td data-label="Username"> <a href="userProfile.html">Mark Taylor</a></td>
-                        <td data-label="Account Number">1234567890</td>
-                        <td data-label="Type">Current</td>
-                        <td data-label="Balance">₦333.283</td>
-                            <td class="test">
-                              <select class="required">
-                                <option value="1">Draft
-                                <option value="2">Active
-                                    <option value="3">Dormant
-                              </select>
-                              <button class="btn"><i class="fa fa-trash"></i></button>
-                          </td>
-                      </tr>
-                </tbody>
-              </table>
-    </body>
-    </html>
+              </tbody>
+            </table>
+  </body>
+  </html>
