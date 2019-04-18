@@ -109,7 +109,7 @@ class TransactionController {
             }
             if(Transaction.newBalance < 0) {
                 return res.status(409).send({
-                    staus: 409,
+                    status: 409,
                     message: 'insufficent funds',
                 });
             }

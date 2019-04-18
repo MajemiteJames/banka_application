@@ -18,20 +18,56 @@
                     <a href="landingPage.html" data-title="Log Out">Log Out</a>
                   </li>
             </ul>
+            <ul>
+                <li>
+                  <a href="landingPage.html" data-title="Log Out">Create Account</a>
+                </li>
+          </ul>
+          <ul>
+              <li>
+                <a href="landingPage.html" data-title="Log Out">Perform Transaction</a>
+              </li>
+        </ul>
           </nav>
-            <div class="left-content">
-                <p>Create a new user(either as staff or admin) below....</p>
-                <div class="tab">Details:
-                    <p><input placeholder="Name..." oninput="this.className = ''"></p>
-                    <p><input placeholder="Password..." oninput="this.className = ''"></p>
-                </div>
-                <div style="overflow:auto;">
-                    <div>
-                        <button type="button" class="button" onclick="nextPrev(-1)"><span>Create Account</span></button>
-                    </div>
-                </div>
-            </div>
+            <div>
+        </div>
+        <!-- popup-->
+        <div id="content1" class="popup-effect">
+          <div class="popup">
+             <!--login form-->
+             <div class="letter">
+                <form>
+                   <div class="form-left">
+                      <input type="text" name="name" placeholder="Firstname" required/>
+                   </div>
+                   <div class="form-left">
+                       <input type="text" name="name" placeholder="Lastname" required/>
+                   </div>
+                   <div class="form-left">
+                      <input type="email" name="email" placeholder="Email" required/>
+                   </div>
+                   <div class="styled-select slate">
+                    <select>
+                      <option>Type of Staff</option>
+                      <option>Admin</option>
+                      <option>Cashier</option>
+                    </select>
+                  </div>
+                   <div class="btnn">
+                      <button type="submit">Done</button>
+                      <br>
+                   </div>
+                </form>
+                <div class="clear"></div>
+             </div>
+             <!--//login form-->
+             <a class="close" href="#">&times;</a>
+          </div>
+       </div>
+       <!-- //popup -->
         </header>
+        <div id="content2"  class="popup-effect">
+          <div class="popup">
         <fieldset>
             <legend>Make a Transaction</legend>
             <div class="transactionBox">
@@ -52,6 +88,12 @@
               </form>
             </div>
         </fieldset>
+        <div class="clear"></div>
+      </div>
+      <!--//login form-->
+      <a class="close" href="#">&times;</a>
+      </div>
+      </div>
         <table>
                 <thead>
                   <tr>

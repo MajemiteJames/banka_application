@@ -12,6 +12,24 @@ body {
   font-family:Muli, sans-serif;
   color:#444;
 }
+.button {
+  border-radius: 4px;
+  line-height: 20px;
+  background-color: #2E3036;
+  border: none;
+  color: #f4511e;
+  text-align: center;
+  font-size: 17px;
+  padding: 10px;
+  width: 199px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-left: -14px;
+  padding-left:57px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
 fieldset {
   display: block;
@@ -70,9 +88,6 @@ input[type=submit] {
 .btn:hover {
     background-color: rgb(116, 225, 65);
   }
-.left-content{
-    margin-left: 15px;
-}
 
 input {
     padding: 10px;
@@ -96,14 +111,14 @@ ul {
 a {
   cursor:pointer;
   display:block;
-  color:#b3b3b3;
+  color:#f4511e;
   text-decoration:none;
 }
 .bckg {
   background-color:#0077ff;
   box-shadow:-4px 0px 10px rgba(14, 14, 14, 0.48) inset;
-  width:250px;
-  height:100%;
+  width:200px;
+  height:100vh;
   position:fixed;
   left:0;
   top:0;
@@ -191,6 +206,7 @@ nav ul li {
   padding-right: 20px;
   transition:all 0.6s;
   border-top:1px solid #2E3036;
+  background-color: #2E3036;
 }
       
 nav ul li:hover {
@@ -205,8 +221,9 @@ nav ul li:hover a {
 }
       
 nav ul li a {
-  line-height:55px;
-  font-size:18px;
+  line-height: 20px;
+  font-size: 18px;
+  padding: 20px;
   position:relative;
   letter-spacing:1px;
   transition:all 0.6s;
@@ -336,20 +353,6 @@ table th {
   background: white;
 }
 
-.button {
-  border-radius: 4px;
-  background-color: #f4511e;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 13px;
-  padding: 10px;
-  width: 140px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
 .button span {
   cursor: pointer;
   display: inline-block;
@@ -383,6 +386,107 @@ table th {
   width: 80px;
   margin-right: 20px;
 }
+/* popup */
+
+.popup-effect {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(152, 152, 152, 0.7);
+	transition: opacity 0ms;
+	visibility: hidden;
+	opacity: 0;
+	z-index: 99;
+}
+
+.popup-effect:target {
+	visibility: visible;
+	opacity: 1;
+}
+
+.popup {
+	background: #eaeaeabf;
+	border-radius: 4px;
+	max-width: 430px;
+	position: relative;
+	margin: 7em auto;
+	padding: 4em 5em;
+	z-index: 999;
+	text-align: center;
+}
+
+.popup .close {
+	position: absolute;
+	top: 5px;
+	right: 15px;
+	transition: all 200ms;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #fff;
+}
+
+.popup .close:hover {
+	color: #686de0;
+}
+.form-left input {
+  padding: 15px;
+  width: 90%;
+color: #000;
+outline: none;
+border: none;
+border-bottom: #00a1ff 2px solid;
+-webkit-appearance: none;
+background: #ffffff96;
+box-sizing: border-box;
+float: right;
+margin-right: 30px;
+}
+form {
+  overflow: hidden;
+}
+
+.styled-select.slate {
+  background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+  height: 34px;
+  width: 240px;
+}
+
+.styled-select.slate select {
+  border: 1px solid rgb(205, 207, 93);
+  font-size: 16px;
+  height: 34px;
+  width: 268px;
+  float: left;
+}
+
+button[type=submit] {
+	background: #00a1ff;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 400;
+	border: none;
+	padding: 11px 20px;
+	letter-spacing: 1px;
+	text-transform: capitalize;
+	cursor: pointer;
+	transition: 0.5s all;
+	margin: 40px 50px 0px;
+	-webkit-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+}
+
+button[type=submit]:hover {
+	opacity: 0.8;
+}
+
+
+/* //popup */
 @media(max-width:1366px) {
   .bckg {
     background-color:#0077ff;
@@ -534,6 +638,18 @@ table th {
     margin-left: -25%;
   }
 }
+@media(max-width:768px) {
+  table {
+    margin-top: 50%;
+  }
+  table th,
+table td {
+  padding: 15px;
+  text-align: center;
+  padding-left: -5px;
+  padding-right: -5px;
+}
+}
 @media(max-width:765px) {
   table {
     border: 1px solid #ccc;
@@ -600,8 +716,15 @@ table td:last-child {
     top:0;
   }
 }
-@media screen and (max-width: 320px) {
-  fieldset {
-    
+@media screen and (max-width: 414px) {
+  table {
+    margin-top: -230px;
+    margin-left: 4px;
+  }
+}
+@media screen and (max-width: 411px) {
+  table {
+    margin-top: -60%;
+    margin-left: 4px;
   }
 }
