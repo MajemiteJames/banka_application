@@ -1,131 +1,110 @@
 import Helper from '../helpers/helper';
-import User from '../datastore/users';
+import dummyData from '../datastore/users';
+import jwt from 'jsonwebtoken';
 
 
+const { users } = dummyData;
 
-
-class UserController {
-
+export default class AuthController {
   /**
-   * Create A User
-   * @param {object} req 
-   * @param {object} res
-   * @returns {object} reflection object 
+   * @description Register a new user
+   * @param {Object} req The request object
+   * @param {Object} res The response object
+   * @route POST /api/v1/auth/signup
+   * @returns {Object} status code, data and message properties
+   * @access public
    */
-  // eslint-disable-next-line consistent-return
-  static signup(request, response) {
-    if (!request.body.firstName) {
-      return response.status(400).json({
-        status: 400,
-        error: 'First name is required',
+  static signUp(req, res) {
+    // eslint-disable-next-line no-unused-vars
+    const { firstName, lastName, email, password, password2 } = req.body;
+    const existingUser = users.some(user => user.email === email);
+    if (!existingUser) {
+      const hashPassword = Helper.hashPassword(req.body.password);
+      const usersLength = users.length;
+      const lastID = users[usersLength - 1].id;
+      const newID = lastID + 1;
+      const newUser = {
+        id: newID,
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+        email: email.trim(),
+        password: hashPassword,
+        type: 'client',
+        createdAt:new Date()
+      }
+
+      users.push(newUser);
+      const payload = { id: newUser.id, email: newUser.email };
+      const token = jwt.sign(payload, 'iamaboy', { expiresIn: '15 minutes' });
+      const data = {
+        token,
+        id: newUser.id,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        email: newUser.email,
+        type: newUser.type,
+        createdAt: newUser.createdAt
+      };
+      return res.status(201).json({
+        status: 201,
+        data,
+        message: 'User registered successfully'
       });
     }
-    if (!request.body.lastName) {
-      return response.status(400).json({
-        status: 400,
-        error: 'Last name is required',
-      });
-    }
-    if (!request.body.email) {
-      return response.status(400).json({
-        status: 400,
-        error: 'Email is required',
-      });
-    }
-    if (!request.body.password) {
-      return response.status(400).json({
-        status: 400,
-        error: 'Password is required',
-      });
-    }
-    if (request.body.password !== request.body.confirmPassword) {
-      return response.status(400).json({
-        status: 400,
-        error: 'Passwords do not match',
-      });
-    }
- 
-    const hashPassword = Helper.hashPassword(request.body.password);
-    const token = Helper.generateToken(request.body.email);
-   
-    const data = {
-      token,
-      id: User.length + 1,
-      email: request.body.email,
-      firstname: request.body.firstName,
-      lastname: request.body.lastName,
-      hashPassword,
-      type: 'user',
-      registered: new Date().toISOString(),
-      isAdmin: false,
-    };
-    User.push(data);
-    return response.status(201).send({
-      status: 201,
-      success: 'true',
-      message: 'Signup successfully',
-      data
-    })
+    res.status(409).json({
+      status: 409,
+      error: 'User already exists'
+    });
+
+    return true;
   }
 
-   /**
-   * Login
-   * @param {object} req 
-   * @param {object} res
-   * @returns {object} user object 
+  /**
+   * @description Log In an existing user
+   * @param {Object} req The request object
+   * @param {Object} res The response object
+   * @route POST /api/v1/auth/signin
+   * @returns {Object} status code, data and message properties
+   * @access public
    */
-  static login(request, response) {
-    if (!request.body.email) {
-      return response.status(400).json({
-        status: 400,
-        error: 'Email is required',
-      });
-    }
-    if (!Helper.isValidEmail(request.body.email)) {
-      return res.status(400).send({ 'message': 'Please enter a valid email address' });
-    }
-    if (!request.body.password) {
-      return response.status(400).json({
-        status: 400,
-        error: 'Password is required',
-      });
-    }
-
-  
-    const token = Helper.generateToken(request.body.email);
-    const data = {
-      token,
-      id: 3,
-      firstname: 'Fejiro',
-      lastname: 'Gospel',
-      email: 'okorojames@gmail.com',
-      password: 'password'
-    }
-    if (request.body.email == 'okorojames@gmail.com' && request.body.password == 'password') {
-        // return the JWT token for the future API calls
-        response.json({
-          success: true,
-          message: 'Authentication successful!',
-          data,
+  static signIn(req, res) {
+    const { email, password } = req.body;
+    for (let i = 0; i < users.length; i += 1) {
+      if (email === users[i].email) {
+        if (password === users[i].password) {
+          const userInfo = users[i];
+          const payload = {
+            id: userInfo.id,
+            email: userInfo.email,
+            type: userInfo.type,
+            firstName: userInfo.firstName,
+            lastName: userInfo.lastName,
+            isAdmin: userInfo.isAdmin
+          };
+          const token = jwt.sign(payload, 'iamaboy', { expiresIn: '15 minutes' });
+          const data = {
+            token,
+            id: userInfo.id,
+            firstName: userInfo.firstName,
+            lastName: userInfo.lastName,
+            email: userInfo.email,
+            type: userInfo.type
+          };
+          return res.status(200).json({
+            status: 200,
+            data,
+            message: 'Login successful'
+          });
+        }
+        return res.status(403).json({
+          status: 403,
+          error: 'Password Incorrect'
         });
       }
-      if(request.body.email !== data.email){
-        response.json({
-          status: 404,
-          success: false,
-          message: 'email not correct',
-        })
-      }
-      if(request.body.password !== data.password) {
-        response.json({
-          status: 404,
-          success: false,
-          message: 'password not correct'
-        })
-      }
     }
-  
- 
-   
+    return res.status(403).json({
+      status: 403,
+      error: 'User not found'
+    });
+  }
 }
-export default UserController;
