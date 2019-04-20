@@ -1,10 +1,13 @@
 import express from 'express';
 import accountController from '../Controllers/Account';
-import Users from '../Controllers/Users';
+import AuthController from '../Controllers/Users';
 import transactionController from '../Controllers/Transaction';
+import AuthValidation from '../middlewares/validateSignUp';
 
 
 const router = express.Router();
+const { signUp, signIn } = AuthController;
+const { validateUserSignup, validateUserLogIn } = AuthValidation;
 
 // get all todos
 router.get('/accounts', accountController.getAllAccount);
@@ -13,8 +16,8 @@ router.get('/accounts', accountController.getAllAccount);
 router.post('/accounts', accountController.createAccount);
 router.post('/transactions/:accountNumber/credit', transactionController.createCredit);
 router.post('/transactions/:accountNumber/debit', transactionController.debitAccount);
-router.post('/auth/signup', Users.signup);
-router.post('/auth/signin', Users.login);
+router.post('/auth/signup',validateUserSignup, signUp);
+router.post('/auth/signin', validateUserLogIn , signIn);
 
 
 
