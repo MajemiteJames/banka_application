@@ -2,8 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server/server';
 import account from '../server/datastore/account'
-//style="overflow:auto;"
-//onclick="nextPrev(-1)
+
 
 chai.use(chaiHttp);
 const { expect } = chai;
@@ -33,7 +32,6 @@ describe('Current Account list Intergration Test', () => {
       expect(res.body).to.be.an('object');
       expect(res.body.message).to.equal('Account created successfully');
       expect(res).to.have.status(201);
-      //console.log(res.body);
       done(err);
         });
     
