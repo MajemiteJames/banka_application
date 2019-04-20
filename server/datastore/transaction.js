@@ -7,34 +7,61 @@
  * @type {Array<Object>}
  * @exports Transactions
  */
-const Transactions = [
+export default {
+  accounts: [
     {
-      transactionId: 1,
-      createdOn: new Date().toISOString(),
-      accountNumber: 2578433446,
-      amount: '40,000.00',
-      cashier: '3',
-      transactionType: 'deposit',
-      accountBalance: '40,000.00',
+      id: 1,
+      accountNumber: 5563847290,
+      createdOn: new Date(2019, 1, 12),
+      owner: 2,
+      type: 'current',
+      status: 'active',
+      balance: 349876358.08
     },
     {
-      transactionId: 2,
-      createdOn: new Date().toISOString(),
-      accountNumber: 3872984638,
-      amount: '40,000.00',
-      cashier: '7',
+      id: 2,
+      accountNumber: 8897654324,
+      createdOn: new Date(2018, 4, 22),
+      owner: 3,
+      type: 'savings',
+      status: 'dormant',
+      balance: 7665435.97
+    }
+  ],
+
+  transactions: [
+    {
+      id: 1,
+      createdOn: new Date(2019, 4, 23),
       transactionType: 'credit',
-      accountBalance: '20,000.00',
+      accountNumber: 8897654324,
+      cashier: 4,
+      owner: 3,
+      amount: 400500.0,
+      oldBalance: 7264935.97,
+      newBalance: 7665435.97
     },
     {
-      transactionId: 3,
-      createdOn: new Date().toISOString(),
-      accountNumber: 193732839,
-      amount: '30,000.00',
-      cashier: '5',
-      transactionType: 'deposit',
-      accountBalance: '70,000.00',
+      id: 2,
+      createdOn: new Date(2019, 1, 20),
+      transactionType: 'debit',
+      accountNumber: 8897654324,
+      cashier: 1,
+      owner: 3,
+      amount: 100500.0,
+      oldBalance: 7264935.97,
+      newBalance: 7665435.97
     },
-  ];
-  
-  export default Transactions;
+    {
+      id: 3,
+      createdOn: new Date(2019, 2, 12),
+      transactionType: 'credit',
+      accountNumber: 5563847290,
+      cashier: 4,
+      owner: 2,
+      amount: 400500.0,
+      oldBalance: 7264935.97,
+      newBalance: 7665435.97
+    }
+  ]
+};
