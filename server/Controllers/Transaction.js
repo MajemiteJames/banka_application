@@ -17,12 +17,7 @@ export default class TransactionController {
     static creditAccount(req, res) {
       const { accountNumber } = req.params;
       const { creditAmount } = req.body;
-    /*  if (users.type !== 'staff') {
-        return res.status(401).json({
-          status: 401,
-          error: 'You are not authorized to carry out that action'
-        });
-      }*/
+      
       const accountToCredit = accounts.find(
         account => account.accountNumber === parseInt(accountNumber, 10)
       );
@@ -35,34 +30,31 @@ export default class TransactionController {
       }
   
       const { balance } = accountToCredit;
-      const accountOwner = users.find(user => user.id);
-      const transactionsLastID = transactions[transactions.length - 1].id;
-      const newID = transactionsLastID + 1;
-      const transaction = {
-        transactionId: newID,
+      const Transaction = {
+        transactionId: transactions.length + 1,
         oldBalance: balance,
         newBalance: balance + parseFloat(creditAmount),
         accountNumber: req.body.accountNumber,
         amount:parseFloat(creditAmount),
-        transactionType : 'client',
+        transactionType : 'credit',
         createdAt:new Date()
       }
   
       // update the balance of the old account
-      accountToCredit.balance = transaction.newBalance;
+      accountToCredit.balance = Transaction.newBalance;
   
-      transactions.push(transaction);
+      transactions.push(Transaction);
 
       const data = {
-        transactionId: transaction.id,
+        transactionId: Transaction.transactionId,
         accountNumber,
-        amount: transaction.amount,
-        transactionType: transaction.type,
+        amount: Transaction.amount,
+        transactionType: Transaction.transactionType,
         accountBalance: accountToCredit.balance
       };
       return res.status(201).json({
         status: 201,
-        data,
+        Transaction,
         message: 'Account credited successfully'
       });
     }

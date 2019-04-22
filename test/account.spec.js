@@ -2,12 +2,93 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server/server';
 import account from '../server/datastore/account'
+import jwt from 'jsonwebtoken';
 
 
 chai.use(chaiHttp);
 const { expect } = chai;
+let authToken;
+let staffToken;
+const fakeAuthToken = 'jkkjkjkksdugvydy_.kdhdyuuuwll';
 
 describe('Current Account list Intergration Test', () => {
+  
+
+  before(done => {
+    const user = {
+      id: 2,
+      email: 'thor@avengers.com',
+      firstName: 'Thor',
+      lastName: 'Odinson',
+      password: 'password123',
+      type: 'client',
+      isAdmin: false,
+      createdAt: new Date(2019, 1, 12)
+    };
+    const payload = {
+      id: user.id,
+      email: user.email,
+      type: user.type,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      isAdmin: user.isAdmin
+    };
+    const token = jwt.sign(payload, 'iamaboy', { expiresIn: '15 minutes' });
+    const data = {
+      token,
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      type: user.type
+    };
+    chai
+      .request(app)
+      .post('/auth/signin')
+      .send(user)
+      .end((err, res) => {
+        authToken = data.token;
+        done();
+      });
+  });
+
+  before(done => {
+    const staff = {
+      id: 1,
+      email: 'obiwan@therebellion.com',
+      firstName: 'Obiwan',
+      lastName: 'Kenobi',
+      password: 'password1',
+      type: 'staff',
+      isAdmin: true,
+      createdAt: new Date(2016, 1, 2)
+    };
+    const payload = {
+      id: staff.id,
+      email: staff.email,
+      type: staff.type,
+      firstName: staff.firstName,
+      lastName: staff.lastName,
+      isAdmin: staff.isAdmin
+    };
+    const token = jwt.sign(payload, 'iamaboy', { expiresIn: '15 minutes' });
+    const data = {
+      token,
+      id: staff.id,
+      firstName: staff.firstName,
+      lastName: staff.lastName,
+      email: staff.email,
+      type: staff.type
+    };
+    chai
+      .request(app)
+      .post('/auth/signin')
+      .send(staff)
+      .end((err, res) => {
+        staffToken =  data.token;
+        done();
+      });
+  });
 
   const Account = {
     id: account.length + 1,
@@ -24,6 +105,7 @@ describe('Current Account list Intergration Test', () => {
     chai
     .request(app)
     .post('/api/v1/accounts')
+    .set('Authorization', authToken)
     .send(Account)
     .end((err, res) => {
       expect(res.body).to.be.an('object');
@@ -47,6 +129,7 @@ describe('Current Account list Intergration Test', () => {
     }
       chai.request(app)
         .post('/api/v1/accounts')
+        .set('Authorization', authToken)
         .send(Account)
         .end((err, res) => {
         expect(res.status).to.equal(400);
@@ -68,6 +151,7 @@ describe('Current Account list Intergration Test', () => {
     }
       chai.request(app)
         .post('/api/v1/accounts')
+        .set('Authorization', authToken)
         .send(Account)
         .end((err, res) => {
         expect(res.status).to.equal(400);
@@ -91,6 +175,7 @@ describe('Current Account list Intergration Test', () => {
       }
       chai.request(app)
         .post('/api/v1/accounts')
+        .set('Authorization', authToken)
         .send(Account)
         .end((err, res) => {
         expect(res.status).to.equal(400);
@@ -112,6 +197,7 @@ describe('Current Account list Intergration Test', () => {
     }
     chai.request(app)
       .post('/api/v1/accounts')
+      .set('Authorization', authToken)
       .send(Account)
       .end((err, res) => {
         expect(res.status).to.equal(400);
@@ -145,6 +231,7 @@ describe('Current Account list Intergration Test', () => {
       chai
         .request(app)
         .get('/api/v1/accounts/2578433446')
+        .set('Authorization', authToken)
         .end((err, res) => {
           expect(res).to.have.status(200);
           expect(res.body).to.be.an('object');
@@ -161,6 +248,7 @@ describe('Current Account list Intergration Test', () => {
       chai
         .request(app)
         .get('/api/v1/accounts/25784334460')
+        .set('Authorization', authToken)
         .end((err, res) => {
           expect(res).to.have.status(404);
           expect(res.body).to.be.an('object');
@@ -176,6 +264,7 @@ describe('Current Account list Intergration Test', () => {
       chai
         .request(app)
         .patch('/api/v1/accounts/2578433446')
+        .set('Authorization', staffToken)
         .send({
           accountNumber: '',
           status: 'active',
@@ -195,6 +284,7 @@ describe('Current Account list Intergration Test', () => {
         chai
           .request(app)
           .patch('/api/v1/accounts/2578433446')
+          .set('Authorization', staffToken)
           .send({
             accountNumber: '2578433446',
             status: '',
@@ -213,6 +303,7 @@ describe('Current Account list Intergration Test', () => {
     it('update a Savings Account', (done) => {
       chai.request(app)
         .patch('/api/v1/accounts/2578433446')
+        .set('Authorization', staffToken)
         .send({
           accountNumber: '2578433446',
           status: 'active',
@@ -233,6 +324,7 @@ describe('Current Account list Intergration Test', () => {
     it('Delete a Current Account not found', (done) => {
       chai.request(app)
         .delete('/api/v1/accounts/38729846380')
+        .set('Authorization', staffToken)
         .end((err, res) => {
           expect(res).to.have.status(404);
           expect(res.type).to.equal('application/json');
