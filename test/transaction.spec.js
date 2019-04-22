@@ -15,36 +15,6 @@ let staffAuthToken;
  * @description Tests for transactions routes
  */
 describe('Transaction Route', () => {
-  before(done => {
-    const user = {
-      email: 'thor@avengers.com',
-      password: 'password123'
-    };
-    chai
-      .request(app)
-      .post(`${API_PREFIX}/auth/signin`)
-      .send(user)
-      .end((_err, res) => {
-        authToken = res.body.data.token;
-        done();
-      });
-  });
-
-  before(done => {
-    const staff = {
-      email: 'kyloren@vader.com',
-      password: 'bensolo'
-    };
-    chai
-      .request(app)
-      .post(`${API_PREFIX}/auth/signin`)
-      .send(staff)
-      .end((_err, res) => {
-        staffAuthToken = res.body.data.token;
-        done();
-      });
-  });
-
   
 
   
@@ -56,7 +26,6 @@ describe('Transaction Route', () => {
     chai
       .request(app)
       .post(`${API_PREFIX}/transactions/${accountNumber}/credit`)
-      .set('Authorization', staffAuthToken)
       .send(creditTransaction)
       .end((err, res) => {
         expect(res.body)
@@ -78,7 +47,6 @@ describe('Transaction Route', () => {
     chai
       .request(app)
       .post(`${API_PREFIX}/transactions/${accountNumber}/credit`)
-      .set('Authorization', staffAuthToken)
       .send(creditTransaction)
       .end((err, res) => {
         expect(res.body)
@@ -100,7 +68,6 @@ describe('Transaction Route', () => {
     chai
       .request(app)
       .post(`${API_PREFIX}/transactions/${accountNumber}/credit`)
-      .set('Authorization', staffAuthToken)
       .send(creditTransaction)
       .end((err, res) => {
         expect(res.body)
@@ -122,7 +89,6 @@ describe('Transaction Route', () => {
     chai
       .request(app)
       .post(`${API_PREFIX}/transactions/${accountNumber}/credit`)
-      .set('Authorization', staffAuthToken)
       .send(creditTransaction)
       .end((err, res) => {
         expect(res.body)
@@ -145,7 +111,6 @@ describe('Transaction Route', () => {
     chai
       .request(app)
       .post(`${API_PREFIX}/transactions/${accountNumber}/debit`)
-      .set('Authorization', staffAuthToken)
       .send(debitTransaction)
       .end((err, res) => {
         expect(res.body)
@@ -167,7 +132,6 @@ describe('Transaction Route', () => {
     chai
       .request(app)
       .post(`${API_PREFIX}/transactions/${accountNumber}/debit`)
-      .set('Authorization', staffAuthToken)
       .send(debitTransaction)
       .end((err, res) => {
         expect(res.body)
@@ -189,7 +153,6 @@ describe('Transaction Route', () => {
     chai
       .request(app)
       .post(`${API_PREFIX}/transactions/${accountNumber}/debit`)
-      .set('Authorization', staffAuthToken)
       .send(debitTransaction)
       .end((err, res) => {
         expect(res.body)
@@ -209,7 +172,6 @@ describe('Transaction Route', () => {
     chai
       .request(app)
       .post(`${API_PREFIX}/transactions/${accountNumber}/debit`)
-      .set('Authorization', staffAuthToken)
       .send(debitTransaction)
       .end((err, res) => {
         expect(res.body)
@@ -231,7 +193,6 @@ describe('Transaction Route', () => {
     chai
       .request(app)
       .post(`${API_PREFIX}/transactions/${accountNumber}/debit`)
-      .set('Authorization', staffAuthToken)
       .send(debitTransaction)
       .end((err, res) => {
         expect(res.body)
