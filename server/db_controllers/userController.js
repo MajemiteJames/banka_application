@@ -22,7 +22,7 @@ export default class AuthController {
   static async signUp(req, res) {
     const { firstName, lastName, email, password } = req.body;
     const existingUser = await users.select(['email'], [`email='${email}'`]);
-    if (existingUser.length > 0) {
+    if (existingUser) {
       return res.status(409).json({
         status: 409,
         error: 'User already exists'
@@ -69,7 +69,7 @@ export default class AuthController {
   static async signIn(req, res) {
     const { email, password } = req.body;
     const findUser = await users.select(['*'], [`email='${email}'`]);
-    if (findUser.length > 0) {
+    if (findUsergit) {
       const verifyPassword = bcrypt.compareSync(password, findUser[0].password);
       if (!verifyPassword) {
         return res.status(404).json({
