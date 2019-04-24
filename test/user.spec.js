@@ -18,6 +18,30 @@ const API_PREFIX = '/api/v1/auth';
  */
 describe('User Route', () => {
   
+  it('Should register a new user', done => {
+    const newUser = {
+      firstName: 'Severus3',
+      lastName: 'Snape3',
+      email: 'snape3@hogwarts.com',
+      password: '1234',
+      password2: '1234'
+    };
+    chai
+      .request(app)
+      .post(`${API_PREFIX}/signup`)
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body)
+          .to.have.property('status')
+          .eql(201);
+        expect(res.body).to.have.property('data');
+        expect(res.body)
+          .to.have.property('message')
+          .eql('User registered successfully');
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
 
   it('Should not register a new user with an empty first name field', done => {
     const newUser = {
@@ -143,7 +167,7 @@ describe('User Route', () => {
     const newUser = {
       firstName: 'Thor',
       lastName: 'Odinson',
-      email: 'thor@avengers.com',
+      email: 'snape3@hogwarts.com',
       password: 'password123',
       password2: 'password123'
     };
@@ -261,8 +285,8 @@ describe('User Route', () => {
 
   it('Should log in an existing user', done => {
     const user = {
-      email: 'obiwan@therebellion.com',
-      password: 'password1'
+      email: 'snape3@hogwarts.com',
+      password: '1234'
     };
     chai
       .request(app)
@@ -321,7 +345,7 @@ describe('User Route', () => {
 
   it('Should not log in a user with an empty password field', done => {
     const user = {
-      email: 'obiwan@therebellion.com',
+      email: 'snape3@hogwarts.com',
       password: ''
     };
     chai
