@@ -1,6 +1,6 @@
 import express from 'express';
 import accountController from '../Controllers/Account';
-import AuthController from '../Controllers/Users';
+import AuthController from '../db_controllers/userController';
 import transactionController from '../Controllers/Transaction';
 import AuthValidation from '../middlewares/validateSignUp';
 import validateTransaction from '../middlewares/validateTransaction';

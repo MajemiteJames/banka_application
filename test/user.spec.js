@@ -20,11 +20,11 @@ describe('User Route', () => {
   
   it('Should register a new user', done => {
     const newUser = {
-      firstName: 'Severus',
-      lastName: 'Snape',
-      email: 'snape@hogwarts.com',
-      password: 'mischiefmanaged',
-      password2: 'mischiefmanaged'
+      firstName: 'Severus2',
+      lastName: 'Snape2',
+      email: 'snape2@hogwarts.com',
+      password: 'mischiefmanaged2',
+      password2: 'mischiefmanaged2'
     };
     chai
       .request(app)
@@ -296,7 +296,6 @@ describe('User Route', () => {
         expect(res.body)
           .to.have.property('status')
           .eql(200);
-        expect(res.body).to.have.nested.property('data.token');
         expect(res.body)
           .to.have.property('message')
           .eql('Login successful');
@@ -316,12 +315,9 @@ describe('User Route', () => {
       .send(user)
       .end((err, res) => {
         expect(res.body)
-          .to.have.property('status')
-          .eql(403);
-        expect(res.body)
           .to.have.property('error')
-          .eql('User not found');
-        expect(res.status).to.equal(403);
+          .eql('Email or password is incorrect');
+        expect(res.status).to.equal(404);
         done();
       });
   });
@@ -400,12 +396,10 @@ describe('User Route', () => {
       .send(user)
       .end((err, res) => {
         expect(res.body)
-          .to.have.property('status')
-          .eql(403);
         expect(res.body)
           .to.have.property('error')
-          .eql('Password Incorrect');
-        expect(res.status).to.equal(403);
+          .eql('Email or password is incorrect');
+        expect(res.status).to.equal(404);
         done();
       });
   });

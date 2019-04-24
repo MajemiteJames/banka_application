@@ -19,7 +19,27 @@ const Helper = {
     comparePassword(hashPassword, password) {
       return bcrypt.compareSync(password, hashPassword);
     },
-    
+     /**
+   * isValidEmail helper method
+   * @param {string} email
+   * @returns {Boolean} True or False
+   */
+  isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  },
+  /**
+   * Gnerate Token
+   * @param {string} id
+   * @returns {string} token
+   */
+  generateToken(id) {
+    const token = jwt.sign({
+      userId: id
+    },
+      process.env.SECRET, { expiresIn: '7d' }
+    );
+    return token;
+  }
 
   }
   
