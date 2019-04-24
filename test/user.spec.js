@@ -18,6 +18,31 @@ const API_PREFIX = '/api/v1/auth';
  */
 describe('User Route', () => {
   
+  it('Should register a new user', done => {
+    const newUser = {
+      firstName: 'Severus5',
+      lastName: 'Snape5',
+      email: 'snape5@hogwarts.com',
+      password: 'mischiefmanaged',
+      password2: 'mischiefmanaged'
+    };
+    chai
+      .request(app)
+      .post(`${API_PREFIX}/signup`)
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body)
+          .to.have.property('status')
+          .eql(201);
+        expect(res.body).to.have.property('data');
+        expect(res.body)
+          .to.have.property('message')
+          .eql('User registered successfully');
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
   it('Should not register a new user with an empty first name field', done => {
     const newUser = {
       firstName: '',
@@ -142,7 +167,7 @@ describe('User Route', () => {
     const newUser = {
       firstName: 'Thor',
       lastName: 'Odinson',
-      email: 'snape3@hogwarts.com',
+      email: 'thor@avengers.com',
       password: 'password123',
       password2: 'password123'
     };
@@ -260,8 +285,8 @@ describe('User Route', () => {
 
   it('Should log in an existing user', done => {
     const user = {
-      email: 'snape3@hogwarts.com',
-      password: '1234'
+      email: 'obiwan@therebellion.com',
+      password: 'password1'
     };
     chai
       .request(app)
@@ -289,6 +314,9 @@ describe('User Route', () => {
       .post(`${API_PREFIX}/signin`)
       .send(user)
       .end((err, res) => {
+        expect(res.body)
+          .to.have.property('status')
+          .eql(404);
         expect(res.body)
           .to.have.property('error')
           .eql('Email or password is incorrect');
@@ -320,7 +348,7 @@ describe('User Route', () => {
 
   it('Should not log in a user with an empty password field', done => {
     const user = {
-      email: 'snape3@hogwarts.com',
+      email: 'obiwan@therebellion.com',
       password: ''
     };
     chai
@@ -371,6 +399,8 @@ describe('User Route', () => {
       .send(user)
       .end((err, res) => {
         expect(res.body)
+          .to.have.property('status')
+          .eql(404);
         expect(res.body)
           .to.have.property('error')
           .eql('Email or password is incorrect');
