@@ -18,30 +18,6 @@ const API_PREFIX = '/api/v1/auth';
  */
 describe('User Route', () => {
   
-  it('Should register a new user', done => {
-    const newUser = {
-      firstName: 'Severus2',
-      lastName: 'Snape2',
-      email: 'snape2@hogwarts.com',
-      password: 'mischiefmanaged2',
-      password2: 'mischiefmanaged2'
-    };
-    chai
-      .request(app)
-      .post(`${API_PREFIX}/signup`)
-      .send(newUser)
-      .end((err, res) => {
-        expect(res.body)
-          .to.have.property('status')
-          .eql(201);
-        expect(res.body).to.have.property('data');
-        expect(res.body)
-          .to.have.property('message')
-          .eql('User registered successfully');
-        expect(res.status).to.equal(201);
-        done();
-      });
-  });
 
   it('Should not register a new user with an empty first name field', done => {
     const newUser = {
