@@ -22,7 +22,7 @@ describe('User Route', () => {
     const newUser = {
       firstName: 'Severus',
       lastName: 'Snape',
-      email: 'snape@hogwarts.com',
+      email: 'snape14@hogwarts.com',
       password: 'mischiefmanaged',
       password2: 'mischiefmanaged'
     };
@@ -178,11 +178,8 @@ describe('User Route', () => {
       .end((err, res) => {
         expect(res.body)
           .to.have.property('status')
-          .eql(409);
-        expect(res.body)
-          .to.have.property('error')
-          .eql('User already exists');
-        expect(res.status).to.equal(409);
+          .eql(400);
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -285,8 +282,10 @@ describe('User Route', () => {
 
   it('Should log in an existing user', done => {
     const user = {
-      email: 'obiwan@therebellion.com',
-      password: 'password1'
+      
+      
+      email: 'snape11@hogwarts.com',
+      password: 'mischiefmanaged',
     };
     chai
       .request(app)
@@ -294,9 +293,8 @@ describe('User Route', () => {
       .send(user)
       .end((err, res) => {
         expect(res.body)
-          .to.have.property('status')
-          .eql(200);
-        expect(res.body).to.have.nested.property('data.token');
+         .to.have.property('status')
+          .eql(201);
         expect(res.body)
           .to.have.property('message')
           .eql('Login successful');
@@ -319,8 +317,8 @@ describe('User Route', () => {
           .to.have.property('status')
           .eql(403);
         expect(res.body)
-          .to.have.property('error')
-          .eql('User not found');
+          .to.have.property('message')
+          .eql('The credentials you provided is incorrect');
         expect(res.status).to.equal(403);
         done();
       });
@@ -403,8 +401,8 @@ describe('User Route', () => {
           .to.have.property('status')
           .eql(403);
         expect(res.body)
-          .to.have.property('error')
-          .eql('Password Incorrect');
+          .to.have.property('message')
+          .eql('The credentials you provided is incorrect');
         expect(res.status).to.equal(403);
         done();
       });
