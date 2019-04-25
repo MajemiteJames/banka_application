@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "8.10.0"
+services:
+  - postgresql
 env:
   global:
   - CC_TEST_REPORTER_ID=c5fcf92b5da295120d8ce321fafb0f0f9748cad6da1077460ca315d1c6d44805
