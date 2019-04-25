@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Banka is a light-weight core banking application that powers banking operations like account",
   "main": "server/server.js",
+  "engines": {
+    "node": "8.10.0",
+    "npm": "3.5.2"
+},
   "scripts": {
     "build": "babel server --out-dir build",
     "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
