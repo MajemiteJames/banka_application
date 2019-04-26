@@ -25,12 +25,9 @@ img {
 }
 #login-box
 {
-    position: relative;
-    width: 400px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 	margin-left: 35%;
 	margin-top: 24%;
-	background: rgba(152, 152, 152, 0.7);
+	
 }
 
 .login input {
@@ -253,8 +250,8 @@ input.checked {
 	font-size: 10px;
 	color: #fff;
 	font-weight: 500;
-	margin-top: -25px;
-	margin-left: 14%;
+	padding-left: 15px;
+	padding-top: 7px;
 }
 h4 {
 	font-size: 30px;
@@ -510,7 +507,7 @@ h4 {
 		margin-top: 31px;
 	}
 	.art-left {
-		margin-top: 29%;
+		margin-top: 1px;
 	}
 }
 
@@ -527,13 +524,14 @@ h4 {
 		padding: .7em .9em;
 		margin: 0px 0px 22px;
 	}
-	.left-box{
+	.left-box {
 		margin-top: -40%;
-		margin-left: -30%;
+		margin-left: -20%;
 	}
 	h2{
 		margin-left: 20%;
 	}
+	
 }
 
 @media(max-width:991px) {
@@ -582,12 +580,10 @@ h4 {
     .bottem-footer p {
         text-align: center;
 	}
-	.art-left {
-		margin-top: 32%;
-	}
+
 	.left-box {
 		margin-top: -35%;
-		margin-left: -40%;
+		margin-left: -34%;
 	}h2 {
 		margin-left: 50px;
 	}
@@ -706,12 +702,6 @@ h4 {
 		margin-left: -50%;
 		margin-top: 0;
 	}
-	.left-box{
-		width: 100%;
-		margin-left: -50%;
-		background: none;
-		margin-top: -25%;
-	}
 	.form-left input {
 		padding: 15px;
 		width: 100%;
@@ -742,6 +732,16 @@ h4 {
 		outline: none;
 		padding-left: 8px;
 	}
+	h4 {
+		font-size: 40px;
+		margin-top: -30px;
+	}
+	.left-box {
+		width: 160%;
+		margin-left: -65%;
+		background: none;
+		margin-top: -20%;
+	}
 }
 @media(max-width:414px) {
 	.art-right {
@@ -757,16 +757,15 @@ h4 {
     .bottem-footer {
         visibility: hidden;
 	}
-	h4 {
-		font-size: 40px;
-		margin-left: -45%;
-		margin-top: -30px;
-	}
-	.left-box{
-		width: 100%;
-		margin-left: -45%;
+	.left-box {
+		width: 165%;
+		margin-left: -65%;
 		background: none;
 		margin-top: -20%;
+	}
+	.more-buttn h3 {
+		margin-top: 19px;
+		font-size: 11px;
 	}
 	.form-left input {
 		padding: 15px;
@@ -780,12 +779,27 @@ h4 {
 		box-sizing: border-box;
 	}
 	.art-left {
-		margin-top: 63%;
+		margin-top: 13%;
 		height: 100vh;
 		width:100%;
 	}
 	h2 {
 		margin-top: 5px;
+	}
+	h4 {
+		font-size: 40px;
+		margin-top: -30px;
+	}
+	.more-buttn a {
+		font-size: 12px;
+		color: blueviolet;
+		/* font-weight: 500; */
+		/* text-decoration: none; */
+		/* text-transform: capitalize; */
+		/* display: inline-block; */
+		/* letter-spacing: 2px; */
+		/* outline: none; */
+		/* padding-left: 8px; */
 	}
 
 }
@@ -809,10 +823,19 @@ h4 {
         visibility: hidden;
 	}
 	.art-left {
-		margin-top: 63%;
+		margin-top: 5%;
 	}
 	h4 {
 		font-size: 20px;
+	}
+	.left-box {
+		width: 167%;
+		background: none;
+		margin-top: -20%;
+	}
+	.more-buttn h3 {
+		margin-top: 1px;
+		font-size: 11px;
 	}
 }
 @media(max-width:360px) {
@@ -820,12 +843,6 @@ h4 {
 		font-size: 40px;
 		margin-left: -50%;
 		margin-top: 0;
-	}
-	.left-box{
-		width: 100%;
-		margin-left: -40%;
-		background: none;
-		margin-top: -25%;
 	}
 	.form-left input {
 		padding: 15px;
@@ -838,14 +855,37 @@ h4 {
 		box-sizing: border-box;
 	}
 	.art-left {
-		margin-top: 63%;
+		margin-top: 40%;
 		height: 100vh;
+		width: 110%;
 	}
 	.popup{
 		margin-left: -20px;
 	}
-	h3 {
-		font-size: 2px;
+	.more-buttn h3 {
+		margin-top: -1px;
+	}
+	h4 {
+		font-size: 30px;
+		margin-left: auto; 
+		margin-top: -30px;
+	}
+	.left-box {
+		width: 175%;
+		margin-left: -70%;
+		background: none;
+		margin-top: -25%;
+	}
+	.more-buttn a {
+		font-size: 11px;
+		color: blueviolet;
+		/* font-weight: 500; */
+		/* text-decoration: none; */
+		text-transform: capitalize;
+		display: inline-block;
+		letter-spacing: 2px;
+		outline: none;
+		/* padding-left: 8px; */
 	}
 
 }
@@ -866,9 +906,30 @@ h4 {
         display: hidden;
 	}
 	.art-left {
-		margin-top: 73%;
-		width:120%;
-    }
+		margin-top: 13%;
+		width:124%;
+	}
+	.left-box {
+		width: 210%;
+		margin-left: -75%;
+		background: none;
+		margin-top: -25%;
+	}
+	.more-buttn h3 {
+		margin-top: 19px;
+		font-size: 11px;
+	}
+	.more-buttn a {
+		font-size: 11px;
+		color: orchid;
+		/* font-weight: 500; */
+		/* text-decoration: none; */
+		text-transform: capitalize;
+		display: inline-block;
+		letter-spacing: 2px;
+		outline: none;
+		/* padding-left: 8px; */
+	}
 }
 
 
