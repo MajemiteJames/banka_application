@@ -22,7 +22,7 @@ describe('User Route', () => {
     const newUser = {
       firstName: 'Severus',
       lastName: 'Snape',
-      email: 'snape14@hogwarts.com',
+      email: 'snape15@hogwarts.com',
       password: 'mischiefmanaged',
       password2: 'mischiefmanaged'
     };

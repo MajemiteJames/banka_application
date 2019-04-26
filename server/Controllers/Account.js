@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this */
-
+/*
 import account from '../datastore/account';
 
 class AccountController {
@@ -158,4 +158,4 @@ class AccountController {
 }
   
   const accountController = new AccountController();
-  export default accountController;
+  export default accountController;*/

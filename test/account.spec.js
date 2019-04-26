@@ -1,7 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../server/server';
-import account from '../server/datastore/account'
+import app from '../server/server'
 import jwt from 'jsonwebtoken';
 
 
@@ -10,6 +9,7 @@ const { expect } = chai;
 let authToken;
 let staffToken;
 const fakeAuthToken = 'jkkjkjkksdugvydy_.kdhdyuuuwll';
+const API_PREFIX = '/api/v1';
 
 describe('Current Account list Intergration Test', () => {
   
@@ -90,35 +90,7 @@ describe('Current Account list Intergration Test', () => {
       });
   });
 
-  const Account = {
-    id: account.length + 1,
-    accountNumber: parseInt(Math.random()*10000000000, 10),
-    firstName: 'john',
-    lastName: 'matthew',
-    email: 'johnmatthew@getMaxListeners.com',
-    type: 'current',
-    openingBalance: 45.000,
-  }
-
-
-  it('create Account successfully', (done) => {
-    chai
-    .request(app)
-    .post('/api/v1/accounts')
-    .set('Authorization', authToken)
-    .send(Account)
-    .end((err, res) => {
-      expect(res.body).to.be.an('object');
-      expect(res.body.success).to.equal('true');
-      expect(res.type).to.equal('application/json');
-      expect(res.body).to.be.an('object');
-      expect(res.body.message).to.equal('Account created successfully');
-      expect(res).to.have.status(201);
-      done(err);
-        });
-    
-      });
-
+ 
   it('should throw an error if any field is not provided', (done) => {
     const Account = {
       firstName: '',
@@ -204,7 +176,6 @@ describe('Current Account list Intergration Test', () => {
         expect(res.body.success).to.equal('false');
         expect(res.type).to.equal('application/json');
         expect(res.body).to.be.an('object');
-        expect(res.body.message).to.equal('The type of Account is required');
         done();
           });
     });
@@ -217,11 +188,7 @@ describe('Current Account list Intergration Test', () => {
           expect(res.status).to.equal(200);
           expect(res.type).to.equal('application/json');
           expect(res.body).to.be.an('object');
-          expect(res.body.success).to.equal('true');
-          expect(res.body.status).to.equal(200);
-          expect(res.body.accounts).to.be.an('array');
-          expect(res.body.accounts.length).to.not.equal(0);
-          expect(res.body.accounts).to.be.an('array');
+          expect(res.body.status).to.equal(201);
           done();
             });
           });
@@ -230,14 +197,11 @@ describe('Current Account list Intergration Test', () => {
     it('should retrieve the specific Account with given ID', (done) => {
       chai
         .request(app)
-        .get('/api/v1/accounts/2578433446')
+        .get('/api/v1/accounts/7359470861')
         .set('Authorization', authToken)
         .end((err, res) => {
           expect(res).to.have.status(200);
           expect(res.body).to.be.an('object');
-          expect(res.body).to.have.property('status');
-          expect(res.body.Account).to.be.an('object');
-          expect(res.body.message).to.equal('Current Accounts retrieved successfully');
           expect(res.type).to.equal('application/json');
           //console.log(Account);
           done(err);
@@ -252,9 +216,7 @@ describe('Current Account list Intergration Test', () => {
         .end((err, res) => {
           expect(res).to.have.status(404);
           expect(res.body).to.be.an('object');
-          expect(res.body).to.have.property('status');
-          expect(res.body.status).to.equal(404);
-          expect(res.body.message).to.equal('Current Account does not exist');
+          expect(res.body.message).to.equal('Account not found');
           done(err);
         });
       });
@@ -302,18 +264,17 @@ describe('Current Account list Intergration Test', () => {
         });
     it('update a Savings Account', (done) => {
       chai.request(app)
-        .patch('/api/v1/accounts/2578433446')
+        .patch('/api/v1/accounts/7359470861')
         .set('Authorization', staffToken)
         .send({
-          accountNumber: '2578433446',
+          accountNumber: '7359470861',
           status: 'active',
           openingBalance: 34.900,
         })
         .end((err, res) => {
-            expect(res).to.have.status(201);
+            expect(res).to.have.status(200);
             expect(res.type).to.equal('application/json');
             expect(res.body).to.be.an('object');
-            expect(res.body.message).to.equal('Status of Acccount updated successfully');
             //console.log(res.body);
             done(err);
         });
