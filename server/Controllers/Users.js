@@ -1,3 +1,5 @@
+/*
+
 import Helper from '../helpers/helper';
 import dummyData from '../datastore/users';
 import jwt from 'jsonwebtoken';
@@ -14,7 +16,7 @@ export default class AuthController {
    * @returns {Object} status code, data and message properties
    * @access public
    */
-  static signUp(req, res) {
+/*  static signUp(req, res) {
     // eslint-disable-next-line no-unused-vars
     const { firstName, lastName, email, password, password2 } = req.body;
     const existingUser = users.some(user => user.email === email);
@@ -57,7 +59,7 @@ export default class AuthController {
     });
 
     return true;
-  }
+  }*/
 
   /**
    * @description Log In an existing user
@@ -67,7 +69,7 @@ export default class AuthController {
    * @returns {Object} status code, data and message properties
    * @access public
    */
-  static signIn(req, res) {
+ /* static signIn(req, res) {
     const { email, password } = req.body;
     for (let i = 0; i < users.length; i += 1) {
       if (email === users[i].email) {
@@ -107,4 +109,4 @@ export default class AuthController {
       error: 'User not found'
     });
   }
-}
+}*/

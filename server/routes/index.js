@@ -1,5 +1,5 @@
 import express from 'express';
-import accountController from '../Controllers/Account';
+import AccountController from '../dbController/accountController';
 import User from '../dbController/userController';
 //import AuthController from '../Controllers/Users';
 import transactionController from '../Controllers/Transaction';
@@ -16,10 +16,11 @@ const { validateCreditTransaction, validateDebitTransaction } = validateTransact
 const { checkToken } = verifyToken;
 
 
-router.get('/accounts', accountController.getAllAccount);
+router.get('/accounts', AccountController.getAll);
+router.get('/user/:email/accounts', AccountController.getByEmail);
 
   
-router.post('/accounts',checkToken, accountController.createAccount);
+router.post('/accounts', AccountController.create);
 router.post('/transactions/:accountNumber/credit', validateCreditTransaction, creditAccount);
 router.post('/transactions/:accountNumber/debit' , validateDebitTransaction, debitAccount);
 router.post('/auth/signup',validateUserSignup, User.create);
@@ -28,13 +29,14 @@ router.post('/auth/signin', validateUserLogIn , User.login);
 
 
 
-router.get('/accounts/:accountNumber',checkToken, accountController.getAccount);
+router.get('/accounts/:accountNumber',AccountController.getOne);
+//router.get('/accounts/:ownerEmail',AccountController.getAllEmail);
 
   
-router.delete('/accounts/:accountNumber',checkToken, accountController.deleteAccount);
+router.delete('/accounts/:accountNumber',  AccountController.delete);
 //router.delete('/api/v1/accounts/:id', Users.deleteUser);
   
 
-router.patch('/accounts/:accountNumber',checkToken, accountController.updateAccount);
+router.patch('/accounts/:accountNumber', AccountController.update);
 
   export default router;
