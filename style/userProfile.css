@@ -793,6 +793,45 @@ fieldset {
   margin-bottom: 20px;
   box-shadow: 10px 10px 5px #aaaaaa;
 }
+.popup {
+  background: #eaeaeabf;
+  border-radius: 4px;
+  max-width: 280px;
+  position: relative;
+  margin: 11em auto;
+  padding: 3em 2em;
+  z-index: 999;
+  text-align: center;
+}
+.styled-select.slate select {
+  border: 1px solid rgb(205, 207, 93);
+  font-size: 16px;
+  height: 34px;
+  width: 280px;
+}
+.popup {
+  background: #eaeaeabf;
+  border-radius: 4px;
+  max-width: 266px;
+  position: relative;
+  margin: 11em auto;
+  padding: 3em 2em;
+  z-index: 999;
+  text-align: center;
+  /* margin-bottom: 5px; */
+}
+.form-left input {
+  padding: 15px;
+  width: 100%;
+  color: #000;
+  outline: none;
+  border: none;
+  border-bottom: #00a1ff 2px solid;
+  -webkit-appearance: none;
+  background: #ffffff96;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
 .tab2 {
   width: 200px;
   padding: 20px;
@@ -865,6 +904,33 @@ h1 {
   font-size: 20px;
   letter-spacing: 2px;
   border-bottom: 1px solid rgba(101, 116, 134, 0.57);
+}
+.popup {
+  background: #eaeaeabf;
+  border-radius: 4px;
+  max-width: 270px;
+  position: relative;
+  margin: 11em auto;
+  padding: 3em 2em;
+  z-index: 999;
+  text-align: center;
+}
+.popup-effect:target {
+  visibility: visible;
+  opacity: 1;
+  background-color: black;
+}
+.form-left input {
+  padding: 15px;
+  width: 100%;
+  color: #000;
+  outline: none;
+  border: none;
+  border-bottom: #00a1ff 2px solid;
+  -webkit-appearance: none;
+  background: #ffffff96;
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 fieldset {
   display: block;
