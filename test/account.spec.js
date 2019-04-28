@@ -197,7 +197,7 @@ describe('Current Account list Intergration Test', () => {
     it('should retrieve the specific Account with given ID', (done) => {
       chai
         .request(app)
-        .get('/api/v1/accounts/7359470861')
+        .get('/api/v1/accounts/2880413833')
         .set('Authorization', authToken)
         .end((err, res) => {
           expect(res).to.have.status(200);
@@ -264,10 +264,10 @@ describe('Current Account list Intergration Test', () => {
         });
     it('update a Savings Account', (done) => {
       chai.request(app)
-        .patch('/api/v1/accounts/7359470861')
+        .patch('/api/v1/accounts/2880413833')
         .set('Authorization', staffToken)
         .send({
-          accountNumber: '7359470861',
+          accountNumber: '2880413833',
           status: 'active',
           openingBalance: 34.900,
         })
