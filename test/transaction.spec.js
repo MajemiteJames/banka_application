@@ -30,11 +30,11 @@ describe('Transaction Route', () => {
       .end((err, res) => {
         expect(res.body)
           .to.have.property('status')
-          .eql(404);
+          .eql(400);
         expect(res.body)
           .to.have.property('error')
           .eql('Account does not exist');
-        expect(res.status).to.equal(404);
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -157,9 +157,9 @@ describe('Transaction Route', () => {
       .end((err, res) => {
         expect(res.body)
           .to.have.property('status')
-          .eql(409);
+          .eql(400);
         expect(res.body).to.have.property('error');
-        expect(res.status).to.equal(409);
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -176,11 +176,11 @@ describe('Transaction Route', () => {
       .end((err, res) => {
         expect(res.body)
           .to.have.property('status')
-          .eql(404);
+          .eql(400);
         expect(res.body)
           .to.have.property('error')
           .eql('Account does not exist');
-        expect(res.status).to.equal(404);
+        expect(res.status).to.equal(400);
         done();
       });
   });
