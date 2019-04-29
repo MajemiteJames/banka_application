@@ -333,8 +333,7 @@ table th {
 	transition: opacity 0ms;
 	visibility: hidden;
 	opacity: 0;
-  z-index: 99;
-  background-color: blue;
+	z-index: 99;
 }
 
 .popup-effect:target {

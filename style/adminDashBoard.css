@@ -37,7 +37,7 @@ fieldset {
   padding: 15px;
   border: 0;
   border: 1px solid red;
-  width: 30%;
+  width: 80%;
 }
 legend {
   display: table;
@@ -48,6 +48,7 @@ legend {
   padding: 5px 20px;
   font-size: 20px;
   text-align: center;
+  color: black;
 }
 
 input[type=text], select {
@@ -60,6 +61,7 @@ input[type=text], select {
   border-radius: 4px;
   box-sizing: border-box;
   display: flex;
+  color: black;
 }
 
 input[type=submit] {
@@ -425,7 +427,8 @@ table th {
 	margin: 7em auto;
 	padding: 4em 5em;
 	z-index: 999;
-	text-align: center;
+  text-align: center;
+  background-color: blue;
 }
 
 .popup .close {
@@ -436,7 +439,8 @@ table th {
 	font-size: 30px;
 	font-weight: bold;
 	text-decoration: none;
-	color: #fff;
+  color: #fff;
+  background-color: blue;
 }
 
 .popup .close:hover {
@@ -790,6 +794,20 @@ h4 {
   /* margin-left: 30%; */
   /* margin-right: 30px; */
 }
+.popup-effect {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(152, 152, 152, 0.7);
+  transition: opacity 0ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 99;
+  background-color: blue;
+  margin-left: -60px;
+}
 }
 
 @media screen and (max-width: 320px) {
@@ -804,4 +822,10 @@ h4 {
     border-bottom: 1px solid rgba(101, 116, 134, 0.57);
     margin-top: -70%;
     float: left;}
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+      margin-top: 85%;
+  }
 }
