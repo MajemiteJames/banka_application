@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _moment = _interopRequireDefault(require("moment"));
 
-var _v = _interopRequireDefault(require("uuid/v4"));
-
 var _db = _interopRequireDefault(require("../db"));
 
 var _helper = _interopRequireDefault(require("../helpers/helper"));
@@ -208,7 +206,7 @@ var User = {
               }));
 
             case 8:
-              return _context3.abrupt("return", res.status(204).send({
+              return _context3.abrupt("return", res.status(200).send({
                 'message': 'deleted'
               }));
 
